@@ -104,3 +104,35 @@ footer {
     .imagen img { width: 100%; }
 }
 
+/* Sección de descarga */
+.descarga {
+    text-align: center;
+    margin-top: 40px;
+    padding: 30px;
+    background-color: #e9f2ff;
+    border-radius: 10px;
+    border: 1px solid #003366;
+}
+
+.descarga img {
+    margin: 20px 0;
+    border-radius: 10px;
+    border: 2px solid #003366;
+}
+
+/* Botón de descarga */
+.boton-descarga {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #003366;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.boton-descarga:hover {
+    background-color: #0055aa;
+}
+
