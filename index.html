@@ -8,11 +8,11 @@
 </head>
 <body>
   <!-- Encabezado principal -->
-<header>
+  <header>
     <h1>Proyecto PLC - ICC 2025</h1>
     <h2>Autor(es): Carlos Adonaí Talamantes González / Miguel Muro Rodríguez</h2>
-  <p>Ingeniería en Computación | Universidad Autónoma de Nayarit</p>
-  <p><img src="uan.png" width="300" height="300" align="middle"></p>
+    <p>Ingeniería en Computación | Universidad Autónoma de Nayarit</p>
+    <p><img src="uan.png" width="300" height="300" align="middle"></p>
     <p>(AÚN EN DESARROLLO)</p>
   </header>
 
@@ -23,69 +23,111 @@
   </section>
 
   <!-- Índice de bloques especiales -->
-<section class="indice">
-  <h3>Bloques especiales:</h3>
-  <ul>
-    <!-- 38 enlaces a secciones -->
-    <!-- Puedes agregar el nombre del bloque junto al número -->
-    <!-- Ejemplo: Bloque 1 - Comparador -->
-    <!-- Cada bloque se enlaza con un id (#bloque1, #bloque2, etc.) -->
-    <li><a href="#bloque1">Bloque 1 - Retardo a la conexión</a></li>
-    <li><a href="#bloque2">Bloque 2 - </a></li>
-    <li><a href="#bloque3">Bloque 3 - </a></li>
-    <li><a href="#bloque4">Bloque 4 - </a></li>
-    <li><a href="#bloque5">Bloque 5 - </a></li>
-    <li><a href="#bloque6">Bloque 6 - </a></li>
-    <li><a href="#bloque7">Bloque 7 - </a></li>
-    <li><a href="#bloque8">Bloque 8 - </a></li>
-    <li><a href="#bloque9">Bloque 9 - </a></li>
-    <li><a href="#bloque10">Bloque 10 - </a></li>
-    <li><a href="#bloque11">Bloque 11 - </a></li>
-    <li><a href="#bloque12">Bloque 12 - </a></li>
-    <li><a href="#bloque13">Bloque 13 - </a></li>
-    <li><a href="#bloque14">Bloque 14 - </a></li>
-    <li><a href="#bloque15">Bloque 15 - </a></li>
-    <li><a href="#bloque16">Bloque 16 - </a></li>
-    <li><a href="#bloque17">Bloque 17 - </a></li>
-    <li><a href="#bloque18">Bloque 18 - </a></li>
-    <li><a href="#bloque19">Bloque 19 - </a></li>
-    <li><a href="#bloque20">Bloque 20 - </a></li>
-    <li><a href="#bloque21">Bloque 21 - </a></li>
-    <li><a href="#bloque22">Bloque 22 - </a></li>
-    <li><a href="#bloque23">Bloque 23 - </a></li>
-    <li><a href="#bloque24">Bloque 24 - </a></li>
-    <li><a href="#bloque25">Bloque 25 - </a></li>
-    <li><a href="#bloque26">Bloque 26 - </a></li>
-    <li><a href="#bloque27">Bloque 27 - </a></li>
-    <li><a href="#bloque28">Bloque 28 - </a></li>
-    <li><a href="#bloque29">Bloque 29 - </a></li>
-    <li><a href="#bloque30">Bloque 30 - </a></li>
-    <li><a href="#bloque31">Bloque 31 - </a></li>
-    <li><a href="#bloque32">Bloque 32 - </a></li>
-    <li><a href="#bloque33">Bloque 33 - </a></li>
-    <li><a href="#bloque34">Bloque 34 - </a></li>
-    <li><a href="#bloque35">Bloque 35 - </a></li>
-    <li><a href="#bloque36">Bloque 36 - </a></li>
-    <li><a href="#bloque37">Bloque 37 - </a></li>
-    <li><a href="#bloque38">Bloque 38 - </a></li>
-  </ul>
+  <section class="indice">
+    <h3>Bloques especiales:</h3>
+    <ul>
+      <li><a href="#bloque1">Bloque 1 - Retardo a la conexión</a></li>
+      <li><a href="#bloque2">Bloque 2 - Retardo a la desconexión</a></li>
+      <li><a href="#bloque3">Bloque 3 - Retardo conexión/desconexión</a></li>
+      <li><a href="#bloque4">Bloque 4 - Retardo a la conexión con memoria</a></li>
+      <li><a href="#bloque5">Bloque 5 - Relé de barrido (salida de impulsos)</a></li>
+      <li><a href="#bloque6">Bloque 6 - Relé de barrido disparado por flancos</a></li>
+      <li><a href="#bloque7">Bloque 7 - Generador de impulsos asíncronos</a></li>
+      <li><a href="#bloque8">Bloque 8 - Generador aleatorio</a></li>
+      <li><a href="#bloque9">Bloque 9 - Interruptor de alumbrado para escalera</a></li>
+      <li><a href="#bloque10">Bloque 10 - Interruptor bifuncional</a></li>
+      <li><a href="#bloque11">Bloque 11 - Temporizador semanal</a></li>
+      <li><a href="#bloque12">Bloque 12 - Temporizador anual</a></li>
+      <li><a href="#bloque13">Bloque 13 - Reloj astronómico</a></li>
+      <li><a href="#bloque14">Bloque 14 - Cronómetro</a></li>
+      <li><a href="#bloque15">Bloque 15 - Contador adelante/atrás</a></li>
+      <li><a href="#bloque16">Bloque 16 - Contador de horas de funcionamiento</a></li>
+      <li><a href="#bloque17">Bloque 17 - Selector de umbral</a></li>
+      <li><a href="#bloque18">Bloque 18 - Instrucción aritmética</a></li>
+      <li><a href="#bloque19">Bloque 19 - Comparador analógico</a></li>
+      <li><a href="#bloque20">Bloque 20 - Conmutador analógico de valor umbral</a></li>
+      <li><a href="#bloque21">Bloque 21 - Amplificador analógico</a></li>
+      <li><a href="#bloque22">Bloque 22 - Vigilancia del valor analógico</a></li>
+      <li><a href="#bloque23">Bloque 23 - Conmutador analógico de valor umbral diferencial</a></li>
+      <li><a href="#bloque24">Bloque 24 - MUX analógico</a></li>
+      <li><a href="#bloque25">Bloque 25 - Rampa analógica</a></li>
+      <li><a href="#bloque26">Bloque 26 - Regulador PI</a></li>
+      <li><a href="#bloque27">Bloque 27 - PWM</a></li>
+      <li><a href="#bloque28">Bloque 28 - Filtro analógico</a></li>
+      <li><a href="#bloque29">Bloque 29 - Máx/mín</a></li>
+      <li><a href="#bloque30">Bloque 30 - Valor medio</a></li>
+      <li><a href="#bloque31">Bloque 31 - Relé autoenclavador</a></li>
+      <li><a href="#bloque32">Bloque 32 - Relé de impulsos</a></li>
+      <li><a href="#bloque33">Bloque 33 - Texto de aviso</a></li>
+      <li><a href="#bloque34">Bloque 34 - Interruptor de software</a></li>
+      <li><a href="#bloque35">Bloque 35 - Registro de desplazamiento</a></li>
+      <li><a href="#bloque36">Bloque 36 - Detección de error de la instrucción aritmética</a></li>
+      <li><a href="#bloque37">Bloque 37 - Convertidor flotante/entero</a></li>
+      <li><a href="#bloque38">Bloque 38 - Convertidor entero/flotante</a></li>
+    </ul>
   </section>
 
   <!-- Secciones de cada bloque -->
   <section class="bloques">
-    <!-- Puedes añadir contenido de cada bloque aquí -->
-    <h3 id="bloque1">Bloque 1 - Retardo a la conexión.</h3>
-    <p>El <strong data-start="3" data-end="46">bloque especial &ldquo;Retardo a la conexión&rdquo;</strong> (también conocido como <strong data-start="70" data-end="77">TON</strong>, por <em data-start="83" data-end="99">Timer On-Delay</em>) retrasa la activación de una salida durante un tiempo determinado después de que la entrada haya recibido una señal de encendido. En otras palabras, cuando la entrada se activa, el temporizador comienza a contar; solo cuando se cumple el tiempo programado, la salida se energiza. Si la señal de entrada se interrumpe antes de que el tiempo termine, el conteo se reinicia y la salida no se activa. Este bloque se utiliza comúnmente para evitar arranques instantáneos de equipos, coordinar secuencias de encendido o introducir pausas controladas en sistemas automatizados.</p>
-    <p>&nbsp;</p>
+    <h2>Desarrollo de bloques especiales</h2>
 
-    <h3 id="bloque2">Bloque 2 - (nombre)</h3>
-    <p>Contenido del bloque 2...</p>
+    <!-- Generación automática de los 38 bloques -->
+    <div class="grid-bloques">
+      <!-- Puedes agregar texto, imágenes o diagramas dentro de cada bloque -->
+      <!-- Ejemplo de estructura -->
+      <div id="bloque1" class="bloque-card">
+        <h3>Bloque 1 - Retardo a la conexión</h3>
+        <p>El bloque especial “Retardo a la conexión” (TON) retrasa la activación de una salida durante un tiempo determinado después de que la entrada haya recibido una señal de encendido. Se utiliza para evitar arranques inmediatos o establecer secuencias temporizadas.</p>
+      </div>
 
-    <!-- ...repites hasta el bloque 38 -->
+      <!-- Resto de bloques vacíos (del 2 al 38) -->
+      <!-- Puedes rellenarlos luego -->
+      <!-- Cada tarjeta es un enlace destino desde el índice -->
+      <!-- Plantilla -->
+      <!-- Solo cambia el número y el nombre -->
+      <!-- Ejemplo: -->
+      <div id="bloque2" class="bloque-card"><h3>Bloque 2 - Retardo a la desconexión</h3><p>Contenido del bloque 2...</p></div>
+      <div id="bloque3" class="bloque-card"><h3>Bloque 3 - Retardo conexión/desconexión</h3><p>Contenido del bloque 3...</p></div>
+      <div id="bloque4" class="bloque-card"><h3>Bloque 4 - Retardo a la conexión con memoria</h3><p>Contenido del bloque 4...</p></div>
+      <div id="bloque5" class="bloque-card"><h3>Bloque 5 - Relé de barrido (salida de impulsos)</h3><p>Contenido del bloque 5...</p></div>
+      <div id="bloque6" class="bloque-card"><h3>Bloque 6 - Relé de barrido disparado por flancos</h3><p>Contenido del bloque 6...</p></div>
+      <div id="bloque7" class="bloque-card"><h3>Bloque 7 - Generador de impulsos asíncronos</h3><p>Contenido del bloque 7...</p></div>
+      <div id="bloque8" class="bloque-card"><h3>Bloque 8 - Generador aleatorio</h3><p>Contenido del bloque 8...</p></div>
+      <div id="bloque9" class="bloque-card"><h3>Bloque 9 - Interruptor de alumbrado para escalera</h3><p>Contenido del bloque 9...</p></div>
+      <div id="bloque10" class="bloque-card"><h3>Bloque 10 - Interruptor bifuncional</h3><p>Contenido del bloque 10...</p></div>
+      <div id="bloque11" class="bloque-card"><h3>Bloque 11 - Temporizador semanal</h3><p>Contenido del bloque 11...</p></div>
+      <div id="bloque12" class="bloque-card"><h3>Bloque 12 - Temporizador anual</h3><p>Contenido del bloque 12...</p></div>
+      <div id="bloque13" class="bloque-card"><h3>Bloque 13 - Reloj astronómico</h3><p>Contenido del bloque 13...</p></div>
+      <div id="bloque14" class="bloque-card"><h3>Bloque 14 - Cronómetro</h3><p>Contenido del bloque 14...</p></div>
+      <div id="bloque15" class="bloque-card"><h3>Bloque 15 - Contador adelante/atrás</h3><p>Contenido del bloque 15...</p></div>
+      <div id="bloque16" class="bloque-card"><h3>Bloque 16 - Contador de horas de funcionamiento</h3><p>Contenido del bloque 16...</p></div>
+      <div id="bloque17" class="bloque-card"><h3>Bloque 17 - Selector de umbral</h3><p>Contenido del bloque 17...</p></div>
+      <div id="bloque18" class="bloque-card"><h3>Bloque 18 - Instrucción aritmética</h3><p>Contenido del bloque 18...</p></div>
+      <div id="bloque19" class="bloque-card"><h3>Bloque 19 - Comparador analógico</h3><p>Contenido del bloque 19...</p></div>
+      <div id="bloque20" class="bloque-card"><h3>Bloque 20 - Conmutador analógico de valor umbral</h3><p>Contenido del bloque 20...</p></div>
+      <div id="bloque21" class="bloque-card"><h3>Bloque 21 - Amplificador analógico</h3><p>Contenido del bloque 21...</p></div>
+      <div id="bloque22" class="bloque-card"><h3>Bloque 22 - Vigilancia del valor analógico</h3><p>Contenido del bloque 22...</p></div>
+      <div id="bloque23" class="bloque-card"><h3>Bloque 23 - Conmutador analógico de valor umbral diferencial</h3><p>Contenido del bloque 23...</p></div>
+      <div id="bloque24" class="bloque-card"><h3>Bloque 24 - MUX analógico</h3><p>Contenido del bloque 24...</p></div>
+      <div id="bloque25" class="bloque-card"><h3>Bloque 25 - Rampa analógica</h3><p>Contenido del bloque 25...</p></div>
+      <div id="bloque26" class="bloque-card"><h3>Bloque 26 - Regulador PI</h3><p>Contenido del bloque 26...</p></div>
+      <div id="bloque27" class="bloque-card"><h3>Bloque 27 - PWM</h3><p>Contenido del bloque 27...</p></div>
+      <div id="bloque28" class="bloque-card"><h3>Bloque 28 - Filtro analógico</h3><p>Contenido del bloque 28...</p></div>
+      <div id="bloque29" class="bloque-card"><h3>Bloque 29 - Máx/mín</h3><p>Contenido del bloque 29...</p></div>
+      <div id="bloque30" class="bloque-card"><h3>Bloque 30 - Valor medio</h3><p>Contenido del bloque 30...</p></div>
+      <div id="bloque31" class="bloque-card"><h3>Bloque 31 - Relé autoenclavador</h3><p>Contenido del bloque 31...</p></div>
+      <div id="bloque32" class="bloque-card"><h3>Bloque 32 - Relé de impulsos</h3><p>Contenido del bloque 32...</p></div>
+      <div id="bloque33" class="bloque-card"><h3>Bloque 33 - Texto de aviso</h3><p>Contenido del bloque 33...</p></div>
+      <div id="bloque34" class="bloque-card"><h3>Bloque 34 - Interruptor de software</h3><p>Contenido del bloque 34...</p></div>
+      <div id="bloque35" class="bloque-card"><h3>Bloque 35 - Registro de desplazamiento</h3><p>Contenido del bloque 35...</p></div>
+      <div id="bloque36" class="bloque-card"><h3>Bloque 36 - Detección de error de la instrucción aritmética</h3><p>Contenido del bloque 36...</p></div>
+      <div id="bloque37" class="bloque-card"><h3>Bloque 37 - Convert flotante/entero</h3><p>Contenido del bloque 37...</p></div>
+      <div id="bloque38" class="bloque-card"><h3>Bloque 38 - Convert entero/flotante</h3><p>Contenido del bloque 38...</p></div>
+    </div>
   </section>
 
   <!-- Sección de descarga del archivo -->
-<section class="descarga">
+  <section class="descarga">
     <h3>Programa 1</h3>
     <p>En esta sección puedes descargar el archivo del proyecto en formato <b>.lsc</b>, el cual contiene la programación del sistema PLC desarrollada en el software correspondiente. Además, se incluye una imagen ilustrativa del sistema simulado.</p>
     <img src="image.png" width="896" height="418">
