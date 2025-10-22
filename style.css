@@ -185,3 +185,100 @@ footer {
   margin-top: 25px;
 }
 
+html {
+  scroll-behavior: smooth; /* desplazamiento suave */
+}
+
+/* --- Índice de bloques --- */
+.indice {
+  background: linear-gradient(135deg, #f0f6ff, #e8f0ff);
+  border: 2px solid #aac4ff;
+  border-radius: 15px;
+  padding: 25px;
+  width: 80%;
+  margin: 40px auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.indice h3 {
+  text-align: center;
+  color: #003366;
+  margin-bottom: 20px;
+}
+
+.indice ul {
+  list-style: none;
+  columns: 2;
+  padding: 0;
+}
+
+.indice li {
+  margin: 6px 0;
+}
+
+.indice a {
+  text-decoration: none;
+  color: #0055aa;
+  transition: all 0.2s ease;
+}
+
+.indice a:hover {
+  color: #ff6600;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* --- Sección de bloques --- */
+.bloques {
+  width: 90%;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.grid-bloques {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.bloque-card {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-top: 4px solid #0055aa;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bloque-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.bloque-card h3 {
+  color: #003366;
+  margin-bottom: 10px;
+}
+
+.bloque-card p {
+  color: #333;
+  font-size: 0.95em;
+  line-height: 1.4em;
+}
+
+/* --- Botón de descarga --- */
+.boton-descarga {
+  background-color: #0055aa;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.boton-descarga:hover {
+  background-color:
+
+
