@@ -11,10 +11,27 @@ header {
   color: white;
   text-align: center;
   padding: 1rem;
+  position: relative;
 }
 
-h1, h2, h3 {
-  margin: 0.5rem 0;
+.escudo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 1rem;
+}
+
+header h1, header h2, header p {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0.2rem 0;
+}
+
+.contacto {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
 }
 
 .intro, .categorias {
@@ -24,21 +41,6 @@ h1, h2, h3 {
   background: white;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-/* Escudo de la universidad */
-.escudo {
-  display: block;
-  margin: 20px auto;
-  width: 200px;
-}
-
-/* Información de contacto */
-.contacto {
-  text-align: center;
-  margin: 10px 0;
-  font-size: 1.1rem;
-  color: #333;
 }
 
 .botones-categoria {
@@ -58,27 +60,11 @@ h1, h2, h3 {
   border-radius: 8px;
   font-size: 1.2rem;
   transition: background 0.3s, transform 0.3s;
-  opacity: 0;
-  transform: translateY(-20px);
-  animation: fadeIn 0.5s forwards;
 }
-
-/* Animación secuencial para cada botón */
-.btn-categoria:nth-child(1) { animation-delay: 0.2s; }
-.btn-categoria:nth-child(2) { animation-delay: 0.4s; }
-.btn-categoria:nth-child(3) { animation-delay: 0.6s; }
-.btn-categoria:nth-child(4) { animation-delay: 0.8s; }
 
 .btn-categoria:hover {
   background: #003d80;
   transform: scale(1.05);
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .bloques-grid {
