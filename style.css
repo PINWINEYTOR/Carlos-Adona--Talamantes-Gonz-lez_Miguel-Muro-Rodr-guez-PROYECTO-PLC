@@ -1,81 +1,100 @@
-/* ===========================
-   STYLE.CSS - Tema claro profesional
-   =========================== */
-
-/* Reset y tipografía */
-* { box-sizing: border-box; }
-html,body { margin:0; padding:0; font-family: 'Segoe UI', Arial, sans-serif; color:#1f2933; background:#f4f6f8; -webkit-font-smoothing:antialiased; }
-a { color: #0055aa; text-decoration: none; }
-a:hover { text-decoration: underline; }
-
-/* HEADER */
-.site-header { background: linear-gradient(135deg,#002b5c,#00509e); color:#fff; padding:28px 20px; box-shadow: 0 6px 20px rgba(2,6,23,0.15); }
-.header-inner { max-width:1200px; margin:0 auto; display:flex; align-items:center; gap:20px; justify-content:space-between; }
-.header-text h1 { margin:0; font-size:28px; letter-spacing:0.6px; }
-.header-text h2 { margin:6px 0 4px 0; font-weight:400; font-size:16px; opacity:0.95; }
-.header-text .meta { margin:0; font-size:14px; opacity:0.9; }
-.header-logo img { border-radius:12px; border:2px solid rgba(255,255,255,0.08); }
-
-/* MAIN / secciones */
-main { max-width:1200px; margin:30px auto; padding:0 16px; }
-section { background:#fff; border-radius:12px; padding:28px; margin-bottom:28px; box-shadow:0 6px 18px rgba(15,23,42,0.06); }
-.intro p { margin:0; color:#334155; line-height:1.6; }
-
-/* ÍNDICE */
-.indice h3 { margin-top:0; color:#0f1724; }
-.indice .small { margin-bottom:14px; color:#475569; font-size:0.95em; }
-.indice-list { columns:2; padding-left:0; list-style:none; margin:0; column-gap:40px; }
-.indice-list li { margin:8px 0; }
-@media (max-width:720px) { .indice-list { columns:1; } }
-
-/* BLOQUES: tarjetas */
-.bloques h2 { margin-top:0; color:#0f1724; }
-.card { margin:10px 0; border-radius:10px; overflow:hidden; border:1px solid #e6eefc; background:linear-gradient(180deg,#ffffff,#fbfdff); }
-.card-body { padding:18px; display:flex; flex-direction:column; gap:12px; }
-.card h3 { margin:0; font-size:1.05rem; color:#032e5b; }
-.card p { margin:0; color:#374151; text-align:justify; font-size:0.95rem; }
-
-/* acciones y media */
-.card-actions { display:flex; gap:10px; align-items:center; }
-.btn { background:#0055aa; color:#fff; border:0; padding:8px 12px; border-radius:8px; cursor:pointer; font-weight:600; transition:background 0.18s; }
-.btn:hover { background:#004289; }
-.card-media { display:none; margin-top:12px; padding-top:12px; border-top:1px dashed #e6eefc; text-align:center; }
-.card-media img { width:100%; max-width:520px; border-radius:8px; border:2px solid #e6eefc; box-shadow:0 6px 18px rgba(2,6,23,0.06); }
-
-/* DESCARGA */
-.descarga { text-align:center; }
-.download-btn { display:inline-block; background:#002b5c; color:#fff; padding:10px 18px; border-radius:8px; font-weight:700; margin-top:12px; }
-.download-btn:hover { background:#00407a; }
-
-/* FOOTER */
-.site-footer { text-align:center; padding:18px; background:#f8fafc; color:#475569; border-top:1px solid #e6eefc; border-radius:8px; }
-
-/* GRID LAYOUT (opcional para múltiples cards) */
-@media (min-width:980px) {
-  .bloques .grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f4f4f4;
+  color: #333;
 }
 
-/* pequeños ajustes responsive */
-@media (max-width:720px) {
-  .header-inner { flex-direction:column; align-items:center; text-align:center; gap:12px; }
-  .header-logo img { width:120px; height:120px; }
-  section { padding:18px; border-radius:10px; }
-  .card-body { padding:14px; }
+header {
+  background: #0059b3;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+
+h1, h2, h3 {
+  margin: 0.5rem 0;
+}
+
+.intro, .categorias {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.botones-categoria {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.btn-categoria {
+  display: inline-block;
+  background: #0059b3;
+  color: white;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  margin: 0.5rem;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  transition: background 0.3s;
+}
+
+.btn-categoria:hover {
+  background: #003d80;
+}
+
+.bloques-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 2rem auto;
 }
 
 .bloque-card {
   display: flex;
+  gap: 1rem;
+  background: white;
+  padding: 1rem;
+  border-radius: 10px;
   align-items: flex-start;
-  gap: 20px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  margin-bottom: 10px;
-  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-.bloque-icono {
-  width: 60px;
-  height: 60px;
+.bloque-card img {
+  width: 100px;
+  height: 100px;
   object-fit: contain;
 }
 
+.bloque-card h3 {
+  margin-top: 0;
+}
+
+.btn-ejemplo, .btn-regresar {
+  display: inline-block;
+  margin-top: 0.5rem;
+  background: #0073e6;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.btn-ejemplo:hover, .btn-regresar:hover {
+  background: #004c99;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #0059b3;
+  color: white;
+}
