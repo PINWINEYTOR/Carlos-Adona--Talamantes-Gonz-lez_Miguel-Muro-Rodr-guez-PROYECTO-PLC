@@ -1,508 +1,425 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Proyecto PLC - ICC 2025</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- ENCABEZADO -->
-  <header class="site-header">
-    <div class="header-inner">
-      <div class="header-text">
-        <h1>Proyecto PLC - ICC 2025</h1>
-        <h2>Autor(es): Carlos Adonaí Talamantes González / Miguel Muro Rodríguez</h2>
-        <p class="meta">Ingeniería en Computación | Universidad Autónoma de Nayarit</p>
-        <p class="note">(AÚN EN DESARROLLO)</p>
-      </div>
-      <div class="header-logo">
-        <img src="uan.png" alt="Logo UAN" width="160" height="160">
-      </div>
-    </div>
+  <!-- Encabezado principal -->
+  <header>
+    <h1>Proyecto PLC - ICC 2025</h1>
+    <h2>Autor(es): Carlos Adonaí Talamantes González / Miguel Muro Rodríguez</h2>
+    <p>Ingeniería en Computación | Universidad Autónoma de Nayarit</p>
+    <p><img src="uan.png" width="300" height="300" align="middle"></p>
+    <p>(AÚN EN DESARROLLO)</p>
   </header>
 
-  <!-- INTRO -->
-  <main>
-    <section class="intro">
-      <h3>Descripción del proyecto</h3>
-      <p>Este proyecto presenta el diseño, programación y simulación de los bloques especiales del entorno LOGO!Soft Comfort, con ejemplos y demostraciones para facilitar el aprendizaje y la aplicación práctica en automatización.</p>
-    </section>
+  <!-- Descripción del proyecto -->
+  <section class="intro">
+    <h3>Descripción del proyecto</h3>
+    <p>Este proyecto presenta el diseño, programación y simulación de todos los bloques especiales, con la finalidad de difundir el conocimiento mediante el uso del simulador LOGO!Soft Comfort.</p>
+  </section>
 
-    <!-- ÍNDICE -->
-    <section class="indice">
-      <h3>Bloques especiales</h3>
-      <p class="small">Haz clic en cualquier bloque para ir a su sección. Usa los botones "Ver imagen / Demo" para añadir o mostrar la imagen asociada.</p>
-      <ul class="indice-list">
-        <li><a href="#bloque1">Bloque 1 - Retardo a la conexión</a></li>
-        <li><a href="#bloque2">Bloque 2 - Retardo a la desconexión</a></li>
-        <li><a href="#bloque3">Bloque 3 - Retardo conexión/desconexión</a></li>
-        <li><a href="#bloque4">Bloque 4 - Retardo a la conexión con memoria</a></li>
-        <li><a href="#bloque5">Bloque 5 - Relé de barrido (salida de impulsos)</a></li>
-        <li><a href="#bloque6">Bloque 6 - Relé de barrido disparado por flancos</a></li>
-        <li><a href="#bloque7">Bloque 7 - Generador de impulsos asíncronos</a></li>
-        <li><a href="#bloque8">Bloque 8 - Generador aleatorio</a></li>
-        <li><a href="#bloque9">Bloque 9 - Interruptor de alumbrado para escalera</a></li>
-        <li><a href="#bloque10">Bloque 10 - Interruptor bifuncional</a></li>
-        <li><a href="#bloque11">Bloque 11 - Temporizador semanal</a></li>
-        <li><a href="#bloque12">Bloque 12 - Temporizador anual</a></li>
-        <li><a href="#bloque13">Bloque 13 - Reloj astronómico</a></li>
-        <li><a href="#bloque14">Bloque 14 - Cronómetro</a></li>
-        <li><a href="#bloque15">Bloque 15 - Contador adelante/atrás</a></li>
-        <li><a href="#bloque16">Bloque 16 - Contador de horas de funcionamiento</a></li>
-        <li><a href="#bloque17">Bloque 17 - Selector de umbral</a></li>
-        <li><a href="#bloque18">Bloque 18 - Instrucción aritmética</a></li>
-        <li><a href="#bloque19">Bloque 19 - Comparador analógico</a></li>
-        <li><a href="#bloque20">Bloque 20 - Conmutador analógico de valor umbral</a></li>
-        <li><a href="#bloque21">Bloque 21 - Amplificador analógico</a></li>
-        <li><a href="#bloque22">Bloque 22 - Vigilancia del valor analógico</a></li>
-        <li><a href="#bloque23">Bloque 23 - Conmutador analógico diferencial</a></li>
-        <li><a href="#bloque24">Bloque 24 - MUX analógico</a></li>
-        <li><a href="#bloque25">Bloque 25 - Rampa analógica</a></li>
-        <li><a href="#bloque26">Bloque 26 - Regulador PI</a></li>
-        <li><a href="#bloque27">Bloque 27 - PWM</a></li>
-        <li><a href="#bloque28">Bloque 28 - Filtro analógico</a></li>
-        <li><a href="#bloque29">Bloque 29 - Máx/mín</a></li>
-        <li><a href="#bloque30">Bloque 30 - Valor medio</a></li>
-        <li><a href="#bloque31">Bloque 31 - Relé autoenclavador</a></li>
-        <li><a href="#bloque32">Bloque 32 - Relé de impulsos</a></li>
-        <li><a href="#bloque33">Bloque 33 - Texto de aviso</a></li>
-        <li><a href="#bloque34">Bloque 34 - Interruptor de software</a></li>
-        <li><a href="#bloque35">Bloque 35 - Registro de desplazamiento</a></li>
-        <li><a href="#bloque36">Bloque 36 - Detección de error de instrucción aritmética</a></li>
-        <li><a href="#bloque37">Bloque 37 - Convert flotante/entero</a></li>
-        <li><a href="#bloque38">Bloque 38 - Convert entero/flotante</a></li>
-      </ul>
-    </section>
+  <!-- Índice -->
+  <section class="indice">
+    <h3>Bloques especiales:</h3>
+    <ul>
+      <li><a href="#bloque1">Bloque 1 - Retardo a la conexión</a></li>
+      <li><a href="#bloque2">Bloque 2 - Retardo a la desconexión</a></li>
+      <li><a href="#bloque3">Bloque 3 - Retardo conexión/desconexión</a></li>
+      <li><a href="#bloque4">Bloque 4 - Retardo a la conexión con memoria</a></li>
+      <li><a href="#bloque5">Bloque 5 - Relé de barrido</a></li>
+      <li><a href="#bloque6">Bloque 6 - Relé de barrido disparado por flancos</a></li>
+      <li><a href="#bloque7">Bloque 7 - Generador de impulsos asíncronos</a></li>
+      <li><a href="#bloque8">Bloque 8 - Generador aleatorio</a></li>
+      <li><a href="#bloque9">Bloque 9 - Interruptor de alumbrado para escalera</a></li>
+      <li><a href="#bloque10">Bloque 10 - Interruptor bifuncional</a></li>
+      <li><a href="#bloque11">Bloque 11 - Temporizador semanal</a></li>
+      <li><a href="#bloque12">Bloque 12 - Temporizador anual</a></li>
+      <li><a href="#bloque13">Bloque 13 - Reloj astronómico</a></li>
+      <li><a href="#bloque14">Bloque 14 - Cronómetro</a></li>
+      <li><a href="#bloque15">Bloque 15 - Contador adelante/atrás</a></li>
+      <li><a href="#bloque16">Bloque 16 - Contador de horas de funcionamiento</a></li>
+      <li><a href="#bloque17">Bloque 17 - Selector de umbral</a></li>
+      <li><a href="#bloque18">Bloque 18 - Instrucción aritmética</a></li>
+      <li><a href="#bloque19">Bloque 19 - Comparador analógico</a></li>
+      <li><a href="#bloque20">Bloque 20 - Conmutador analógico de valor umbral</a></li>
+      <li><a href="#bloque21">Bloque 21 - Amplificador analógico</a></li>
+      <li><a href="#bloque22">Bloque 22 - Vigilancia del valor analógico</a></li>
+      <li><a href="#bloque23">Bloque 23 - Conmutador analógico de valor umbral diferencial</a></li>
+      <li><a href="#bloque24">Bloque 24 - MUX analógico</a></li>
+      <li><a href="#bloque25">Bloque 25 - Rampa analógica</a></li>
+      <li><a href="#bloque26">Bloque 26 - Regulador PI</a></li>
+      <li><a href="#bloque27">Bloque 27 - PWM</a></li>
+      <li><a href="#bloque28">Bloque 28 - Filtro analógico</a></li>
+      <li><a href="#bloque29">Bloque 29 - Máx/mín</a></li>
+      <li><a href="#bloque30">Bloque 30 - Valor medio</a></li>
+      <li><a href="#bloque31">Bloque 31 - Relé autoenclavador</a></li>
+      <li><a href="#bloque32">Bloque 32 - Relé de impulsos</a></li>
+      <li><a href="#bloque33">Bloque 33 - Texto de aviso</a></li>
+      <li><a href="#bloque34">Bloque 34 - Interruptor de software</a></li>
+      <li><a href="#bloque35">Bloque 35 - Registro de desplazamiento</a></li>
+      <li><a href="#bloque36">Bloque 36 - Detección de error de la instrucción aritmética</a></li>
+      <li><a href="#bloque37">Bloque 37 - Convertidor flotante/entero</a></li>
+      <li><a href="#bloque38">Bloque 38 - Convertidor entero/flotante</a></li>
+    </ul>
+  </section>
 
-    <!-- BLOQUES -->
-    <section class="bloques">
-      <h2>Desarrollo de bloques especiales</h2>
+  <!-- Bloques -->
+  <section class="bloques">
+    <h2>Desarrollo de bloques especiales</h2>
+    <div class="grid-bloques">
 
       <!-- Bloque 1 -->
-      <article class="card" id="bloque1">
-        <div class="card-body">
+      <div id="bloque1" class="bloque-card">
+        <img src="bloque1.png" alt="Bloque 1" class="bloque-icono">
+        <div>
           <h3>Bloque 1 - Retardo a la conexión</h3>
-          <p>Retrasa la activación de una salida durante un tiempo definido tras recibir una señal de entrada (TON). Si la entrada vuelve a 0 antes de finalizar el tiempo, el temporizador se reinicia. Uso típico: secuencias de arranque.</p>
-          <div class="card-actions">
-            <button class="btn" data-target="img-b1">Ver imagen / Demo</button>
-          </div>
-          <div class="card-media" id="img-b1"><img src="bloque1.png" alt="Bloque 1 - imagen (coloca archivo)"></div>
+          <p>Retrasa la activación de una salida durante un tiempo definido tras recibir señal de entrada. Útil para secuencias temporizadas o arranques retardados.</p>
         </div>
-      </article>
+      </div>
 
       <!-- Bloque 2 -->
-      <article class="card" id="bloque2">
-        <div class="card-body">
+      <div id="bloque2" class="bloque-card">
+        <img src="bloque2.png" alt="Bloque 2" class="bloque-icono">
+        <div>
           <h3>Bloque 2 - Retardo a la desconexión</h3>
-          <p>Mantiene la salida activada un tiempo adicional después de que la entrada se apaga (TOF). Evita apagados inmediatos y se usa para asegurar tiempos de enfriamiento o cierre secuencial.</p>
-          <div class="card-actions"><button class="btn" data-target="img-b2">Ver imagen / Demo</button></div>
-          <div class="card-media" id="img-b2"><img src="bloque2.png" alt="Bloque 2 - imagen"></div>
+          <p>Mantiene la salida activa durante un tiempo luego de desactivar la entrada. Ideal para ventiladores o sistemas de apagado retardado.</p>
         </div>
-      </article>
+      </div>
 
       <!-- Bloque 3 -->
-      <article class="card" id="bloque3">
-        <div class="card-body">
+      <div id="bloque3" class="bloque-card">
+        <img src="bloque3.png" alt="Bloque 3" class="bloque-icono">
+        <div>
           <h3>Bloque 3 - Retardo conexión/desconexión</h3>
-          <p>Combina TON y TOF con tiempos independientes para encendido y apagado. Permite controlar secuencias donde ambos retardos son necesarios sin usar dos bloques separados.</p>
-          <div class="card-actions"><button class="btn" data-target="img-b3">Ver imagen / Demo</button></div>
-          <div class="card-media" id="img-b3"><img src="bloque3.png" alt="Bloque 3 - imagen"></div>
+          <p>Combina funciones de TON y TOF, permitiendo tiempos independientes de encendido y apagado en una misma salida.</p>
         </div>
-      </article>
+      </div>
 
       <!-- Bloque 4 -->
-      <article class="card" id="bloque4">
-        <div class="card-body">
+      <div id="bloque4" class="bloque-card">
+        <img src="bloque4.png" alt="Bloque 4" class="bloque-icono">
+        <div>
           <h3>Bloque 4 - Retardo a la conexión con memoria</h3>
-          <p>Temporizador con retención: conserva el tiempo acumulado si la entrada se interrumpe y reanuda la cuenta al volver. Se usa en señales intermitentes que requieren acumulación.</p>
-          <div class="card-actions"><button class="btn" data-target="img-b4">Ver imagen / Demo</button></div>
-          <div class="card-media" id="img-b4"><img src="bloque4.png" alt="Bloque 4 - imagen"></div>
+          <p>Acumula el tiempo transcurrido aunque la señal se interrumpa, reanudando la temporización al restablecer la entrada.</p>
         </div>
-      </article>
+      </div>
 
       <!-- Bloque 5 -->
-      <article class="card" id="bloque5">
-        <div class="card-body">
-          <h3>Bloque 5 - Relé de barrido (salida de impulsos)</h3>
-          <p>Genera impulsos periódicos mientras la entrada esté activa; ajusta duración y periodo. Ideal para señales de pulso repetitivo (ej. válvulas intermitentes).</p>
-          <div class="card-actions"><button class="btn" data-target="img-b5">Ver imagen / Demo</button></div>
-          <div class="card-media" id="img-b5"><img src="bloque5.png" alt="Bloque 5 - imagen"></div>
+      <div id="bloque5" class="bloque-card">
+        <img src="bloque5.png" alt="Bloque 5" class="bloque-icono">
+        <div>
+          <h3>Bloque 5 - Relé de barrido</h3>
+          <p>Genera impulsos periódicos mientras la entrada esté activa, definiendo duración y frecuencia de cada pulso.</p>
         </div>
-      </article>
+      </div>
 
       <!-- Bloque 6 -->
-      <article class="card" id="bloque6">
-        <div class="card-body">
+      <div id="bloque6" class="bloque-card">
+        <img src="bloque6.png" alt="Bloque 6" class="bloque-icono">
+        <div>
           <h3>Bloque 6 - Relé de barrido disparado por flancos</h3>
-          <p>Emite un pulso de salida al detectar un flanco de la entrada (ascendente o descendente). Útil para sincronizar eventos con transiciones de señal.</p>
-          <div class="card-actions"><button class="btn" data-target="img-b6">Ver imagen / Demo</button></div>
-          <div class="card-media" id="img-b6"><img src="bloque6.png" alt="Bloque 6 - imagen"></div>
+          <p>Emite un solo pulso al detectar un cambio de estado en la señal de entrada (flanco ascendente o descendente).</p>
         </div>
-      </article>
+      </div>
 
       <!-- Bloque 7 -->
-      <article class="card" id="bloque7">
-        <div class="card-body">
+      <div id="bloque7" class="bloque-card">
+        <img src="bloque7.png" alt="Bloque 7" class="bloque-icono">
+        <div>
           <h3>Bloque 7 - Generador de impulsos asíncronos</h3>
-          <p>Genera una señal periódica independiente de otras entradas, con periodo y duty configurables; funciona como reloj interno para sincronización o pruebas.</p>
-          <div class="card-actions"><button class="btn" data-target="img-b7">Ver imagen / Demo</button></div>
-          <div class="card-media" id="img-b7"><img src="bloque7.png" alt="Bloque 7 - imagen"></div>
+          <p>Produce impulsos continuos con un periodo y ciclo ajustable, funcionando como generador de reloj independiente.</p>
         </div>
-      </article>
+      </div>
 
       <!-- Bloque 8 -->
-      <article class="card" id="bloque8">
-        <div class="card-body">
+      <div id="bloque8" class="bloque-card">
+        <img src="bloque8.png" alt="Bloque 8" class="bloque-icono">
+        <div>
           <h3>Bloque 8 - Generador aleatorio</h3>
-          <p>Produce valores digitales o analógicos aleatorios dentro de un rango definido; útil para simulaciones, pruebas de respuesta o comportamientos no determinísticos.</p>
-          <div class="card-actions"><button class="btn" data-target="img-b8">Ver imagen / Demo</button></div>
-          <div class="card-media" id="img-b8"><img src="bloque8.png" alt="Bloque 8 - imagen"></div>
+          <p>Genera valores digitales o analógicos al azar dentro de un rango definido, útil para simulaciones o pruebas.</p>
         </div>
-      </article>
+      </div>
 
       <!-- Bloque 9 -->
-      <article class="card" id="bloque9">
-        <div class="card-body">
+      <div id="bloque9" class="bloque-card">
+        <img src="bloque9.png" alt="Bloque 9" class="bloque-icono">
+        <div>
           <h3>Bloque 9 - Interruptor de alumbrado para escalera</h3>
-          <p>Activa la iluminación por un tiempo prefijado tras pulsación; frecuentemente usado en control de escaleras y pasillos donde se requiere iluminación temporal.</p>
-          <div class="card-actions"><button class="btn" data-target="img-b9">Ver imagen / Demo</button></div>
-          <div class="card-media" id="img-b9"><img src="bloque9.png" alt="Bloque 9 - imagen"></div>
+          <p>Activa una salida por un tiempo predeterminado tras presionar un botón, simulando control de iluminación temporizada.</p>
         </div>
-      </article>
+      </div>
 
       <!-- Bloque 10 -->
-      <article class="card" id="bloque10">
-        <div class="card-body">
+      <div id="bloque10" class="bloque-card">
+        <img src="bloque10.png" alt="Bloque 10" class="bloque-icono">
+        <div>
           <h3>Bloque 10 - Interruptor bifuncional</h3>
-          <p>Conmuta la salida entre encendido y apagado con cada pulsación (toggle). Simplifica controles manuales con un solo pulsador.</p>
-          <div class="card-actions"><button class="btn" data-target="img-b10">Ver imagen / Demo</button></div>
-          <div class="card-media" id="img-b10"><img src="bloque10.png" alt="Bloque 10 - imagen"></div>
+          <p>Alterna el estado de la salida con cada pulsación de la entrada, simplificando el control manual.</p>
         </div>
-      </article>
+      </div>
 
       <!-- Bloque 11 -->
-      <article class="card" id="bloque11">
-        <div class="card-body">
+      <div id="bloque11" class="bloque-card">
+        <img src="bloque11.png" alt="Bloque 11" class="bloque-icono">
+        <div>
           <h3>Bloque 11 - Temporizador semanal</h3>
-          <p>Permite programar eventos según días y horas de la semana; ideal para rutinas semanales como horarios de riego o iluminación comercial.</p>
-          <div class="card-actions"><button class="btn" data-target="img-b11">Ver imagen / Demo</button></div>
-          <div class="card-media" id="img-b11"><img src="bloque11.png" alt="Bloque 11 - imagen"></div>
+          <p>Permite programar activaciones y desactivaciones automáticas según días y horas de la semana.</p>
         </div>
-      </article>
+      </div>
 
       <!-- Bloque 12 -->
-      <article class="card" id="bloque12">
-        <div class="card-body">
+      <div id="bloque12" class="bloque-card">
+        <img src="bloque12.png" alt="Bloque 12" class="bloque-icono">
+        <div>
           <h3>Bloque 12 - Temporizador anual</h3>
-          <p>Programa activaciones en fechas concretas del año (ej. festivos); útil para automatizaciones estacionales o mantenimiento programado.</p>
-          <div class="card-actions"><button class="btn" data-target="img-b12">Ver imagen / Demo</button></div>
-          <div class="card-media" id="img-b12"><img src="bloque12.png" alt="Bloque 12 - imagen"></div>
+          <p>Controla eventos en fechas específicas del año, ideal para automatizaciones estacionales o de mantenimiento.</p>
         </div>
-      </article>
+      </div>
 
       <!-- Bloque 13 -->
-      <article class="card" id="bloque13">
-        <div class="card-body">
+      <div id="bloque13" class="bloque-card">
+        <img src="bloque13.png" alt="Bloque 13" class="bloque-icono">
+        <div>
           <h3>Bloque 13 - Reloj astronómico</h3>
-          <p>Calcula amanecer/atardecer y ajusta salidas según esos eventos; útil para automatizar alumbrado exterior según luz natural.</p>
-          <div class="card-actions"><button class="btn" data-target="img-b13">Ver imagen / Demo</button></div>
-          <div class="card-media" id="img-b13"><img src="bloque13.png" alt="Bloque 13 - imagen"></div>
+          <p>Ajusta encendido y apagado según la salida y puesta del sol, adaptándose automáticamente a la fecha.</p>
         </div>
-      </article>
+      </div>
 
       <!-- Bloque 14 -->
-      <article class="card" id="bloque14">
-        <div class="card-body">
+      <div id="bloque14" class="bloque-card">
+        <img src="bloque14.png" alt="Bloque 14" class="bloque-icono">
+        <div>
           <h3>Bloque 14 - Cronómetro</h3>
-          <p>Mide intervalos entre eventos con funciones de iniciar, pausar y reset; útil para medir tiempos de ciclo o procesos.</p>
-          <div class="card-actions"><button class="btn" data-target="img-b14">Ver imagen / Demo</button></div>
-          <div class="card-media" id="img-b14"><img src="bloque14.png" alt="Bloque 14 - imagen"></div>
+          <p>Mide intervalos de tiempo entre eventos, pudiendo iniciarse, pausarse y reiniciarse según la lógica del programa.</p>
         </div>
-      </article>
+      </div>
 
       <!-- Bloque 15 -->
-      <article class="card" id="bloque15">
-        <div class="card-body">
+      <div id="bloque15" class="bloque-card">
+        <img src="bloque15.png" alt="Bloque 15" class="bloque-icono">
+        <div>
           <h3>Bloque 15 - Contador adelante/atrás</h3>
-          <p>Cuenta pulsos hacia arriba o hacia abajo según entradas separadas; permite llevar conteos incrementales y decrementales en un mismo bloque.</p>
-          <div class="card-actions"><button class="btn" data-target="img-b15">Ver imagen / Demo</button></div>
-          <div class="card-media" id="img-b15"><img src="bloque15.png" alt="Bloque 15 - imagen"></div>
+          <p>Cuenta pulsos en ambas direcciones, aumentando o disminuyendo un valor según la señal recibida.</p>
         </div>
-      </article>
+      </div>
 
       <!-- Bloque 16 -->
-      <article class="card" id="bloque16">
-        <div class="card-body">
+      <div id="bloque16" class="bloque-card">
+        <img src="bloque16.png" alt="Bloque 16" class="bloque-icono">
+        <div>
           <h3>Bloque 16 - Contador de horas de funcionamiento</h3>
-          <p>Acumula horas totales de operación de un equipo; útil para programación de mantenimiento preventivo y registro de uso.</p>
-          <div class="card-actions"><button class="btn" data-target="img-b16">Ver imagen / Demo</button></div>
-          <div class="card-media" id="img-b16"><img src="bloque16.png" alt="Bloque 16 - imagen"></div>
+          <p>Acumula el tiempo total de operación de un sistema o dispositivo, útil para mantenimiento preventivo.</p>
         </div>
-      </article>
+      </div>
 
       <!-- Bloque 17 -->
-      <article class="card" id="bloque17">
-        <div class="card-body">
+      <div id="bloque17" class="bloque-card">
+        <img src="bloque17.png" alt="Bloque 17" class="bloque-icono">
+        <div>
           <h3>Bloque 17 - Selector de umbral</h3>
-          <p>Compara una entrada analógica con un umbral configurado y activa la salida si se supera (o desciende). Aplicación típica: alarmas o control on/off por valor.</p>
-          <div class="card-actions"><button class="btn" data-target="img-b17">Ver imagen / Demo</button></div>
-          <div class="card-media" id="img-b17"><img src="bloque17.png" alt="Bloque 17 - imagen"></div>
+          <p>Compara una señal analógica con un valor límite, activando la salida al superar o descender del umbral.</p>
         </div>
-      </article>
+      </div>
 
       <!-- Bloque 18 -->
-      <article class="card" id="bloque18">
-        <div class="card-body">
+      <div id="bloque18" class="bloque-card">
+        <img src="bloque18.png" alt="Bloque 18" class="bloque-icono">
+        <div>
           <h3>Bloque 18 - Instrucción aritmética</h3>
-          <p>Permite realizar operaciones básicas (suma, resta, multiplicación, división) sobre valores numéricos, ideal para cálculos en tiempo real dentro del programa.</p>
-          <div class="card-actions"><button class="btn" data-target="img-b18">Ver imagen / Demo</button></div>
-          <div class="card-media" id="img-b18"><img src="bloque18.png" alt="Bloque 18 - imagen"></div>
+          <p>Realiza operaciones matemáticas básicas sobre señales analógicas: suma, resta, multiplicación y división.</p>
         </div>
-      </article>
+      </div>
 
       <!-- Bloque 19 -->
-      <article class="card" id="bloque19">
-        <div class="card-body">
+      <div id="bloque19" class="bloque-card">
+        <img src="bloque19.png" alt="Bloque 19" class="bloque-icono">
+        <div>
           <h3>Bloque 19 - Comparador analógico</h3>
-          <p>Compara dos valores analógicos y proporciona salidas lógicas según mayor, menor o igual. Útil para control de límites y conmutación entre señales.</p>
-          <div class="card-actions"><button class="btn" data-target="img-b19">Ver imagen / Demo</button></div>
-          <div class="card-media" id="img-b19"><img src="bloque19.png" alt="Bloque 19 - imagen"></div>
+          <p>Compara dos valores analógicos e indica cuál es mayor, menor o igual mediante señales de salida.</p>
         </div>
-      </article>
+      </div>
 
       <!-- Bloque 20 -->
-      <article class="card" id="bloque20">
-        <div class="card-body">
+      <div id="bloque20" class="bloque-card">
+        <img src="bloque20.png" alt="Bloque 20" class="bloque-icono">
+        <div>
           <h3>Bloque 20 - Conmutador analógico de valor umbral</h3>
-          <p>Cambia la salida entre dos valores analógicos predefinidos cuando se cruza un umbral; útil para escalado automático o selección de setpoints.</p>
-          <div class="card-actions"><button class="btn" data-target="img-b20">Ver imagen / Demo</button></div>
-          <div class="card-media" id="img-b20"><img src="bloque20.png" alt="Bloque 20 - imagen"></div>
+          <p>Cambia entre dos valores analógicos predefinidos al alcanzar un umbral configurado.</p>
         </div>
-      </article>
+      </div>
 
       <!-- Bloque 21 -->
-      <article class="card" id="bloque21">
-        <div class="card-body">
+      <div id="bloque21" class="bloque-card">
+        <img src="bloque21.png" alt="Bloque 21" class="bloque-icono">
+        <div>
           <h3>Bloque 21 - Amplificador analógico</h3>
-          <p>Multiplica o escala una señal analógica mediante un factor de ganancia, permitiendo ajustar rangos o mejorar resolución de señal.</p>
-          <div class="card-actions"><button class="btn" data-target="img-b21">Ver imagen / Demo</button></div>
-          <div class="card-media" id="img-b21"><img src="bloque21.png" alt="Bloque 21 - imagen"></div>
+          <p>Modifica la amplitud de una señal analógica multiplicándola por un factor de ganancia determinado.</p>
         </div>
-      </article>
+      </div>
 
       <!-- Bloque 22 -->
-      <article class="card" id="bloque22">
-        <div class="card-body">
+      <div id="bloque22" class="bloque-card">
+        <img src="bloque22.png" alt="Bloque 22" class="bloque-icono">
+        <div>
           <h3>Bloque 22 - Vigilancia del valor analógico</h3>
-          <p>Supervisa una señal analógica y genera alarmas o salidas cuando el valor sale de un rango permitido; incluye umbrales alto/bajo.</p>
-          <div class="card-actions"><button class="btn" data-target="img-b22">Ver imagen / Demo</button></div>
-          <div class="card-media" id="img-b22"><img src="bloque22.png" alt="Bloque 22 - imagen"></div>
+          <p>Supervisa una señal analógica y genera alarma si el valor está fuera del rango permitido.</p>
         </div>
-      </article>
+      </div>
 
       <!-- Bloque 23 -->
-      <article class="card" id="bloque23">
-        <div class="card-body">
-          <h3>Bloque 23 - Conmutador analógico diferencial</h3>
-          <p>Conmutador con histéresis: evita oscilaciones al definir dos umbrales distintos para activar y desactivar la salida.</p>
-          <div class="card-actions"><button class="btn" data-target="img-b23">Ver imagen / Demo</button></div>
-          <div class="card-media" id="img-b23"><img src="bloque23.png" alt="Bloque 23 - imagen"></div>
+      <div id="bloque23" class="bloque-card">
+        <img src="bloque23.png" alt="Bloque 23" class="bloque-icono">
+        <div>
+          <h3>Bloque 23 - Conmutador analógico de valor umbral diferencial</h3>
+          <p>Actúa con histéresis evitando oscilaciones, con umbrales distintos de activación y desactivación.</p>
         </div>
-      </article>
+      </div>
 
       <!-- Bloque 24 -->
-      <article class="card" id="bloque24">
-        <div class="card-body">
+      <div id="bloque24" class="bloque-card">
+        <img src="bloque24.png" alt="Bloque 24" class="bloque-icono">
+        <div>
           <h3>Bloque 24 - MUX analógico</h3>
-          <p>Selecciona una entre varias señales analógicas de entrada y la dirige a la salida según una señal de control; útil para multiplexar sensores.</p>
-          <div class="card-actions"><button class="btn" data-target="img-b24">Ver imagen / Demo</button></div>
-          <div class="card-media" id="img-b24"><img src="bloque24.png" alt="Bloque 24 - imagen"></div>
+          <p>Selecciona una de varias señales analógicas para dirigirla a una salida común según una señal de control.</p>
         </div>
-      </article>
+      </div>
 
       <!-- Bloque 25 -->
-      <article class="card" id="bloque25">
-        <div class="card-body">
+      <div id="bloque25" class="bloque-card">
+        <img src="bloque25.png" alt="Bloque 25" class="bloque-icono">
+        <div>
           <h3>Bloque 25 - Rampa analógica</h3>
-          <p>Genera una transición suave entre dos valores analógicos en un tiempo definido; útil para arranques progresivos y evitar saltos bruscos.</p>
-          <div class="card-actions"><button class="btn" data-target="img-b25">Ver imagen / Demo</button></div>
-          <div class="card-media" id="img-b25"><img src="bloque25.png" alt="Bloque 25 - imagen"></div>
+          <p>Genera una señal que aumenta o disminuye progresivamente entre dos valores definidos.</p>
         </div>
-      </article>
+      </div>
 
       <!-- Bloque 26 -->
-      <article class="card" id="bloque26">
-        <div class="card-body">
+      <div id="bloque26" class="bloque-card">
+        <img src="bloque26.png" alt="Bloque 26" class="bloque-icono">
+        <div>
           <h3>Bloque 26 - Regulador PI</h3>
-          <p>Controlador proporcional-integral que ajusta una salida analógica para mantener una variable a un setpoint; usado en control de procesos.</p>
-          <div class="card-actions"><button class="btn" data-target="img-b26">Ver imagen / Demo</button></div>
-          <div class="card-media" id="img-b26"><img src="bloque26.png" alt="Bloque 26 - imagen"></div>
+          <p>Control proporcional-integral que ajusta la salida para mantener una variable dentro del valor deseado.</p>
         </div>
-      </article>
+      </div>
 
       <!-- Bloque 27 -->
-      <article class="card" id="bloque27">
-        <div class="card-body">
+      <div id="bloque27" class="bloque-card">
+        <img src="bloque27.png" alt="Bloque 27" class="bloque-icono">
+        <div>
           <h3>Bloque 27 - PWM</h3>
-          <p>Genera señal PWM (modulación por ancho de pulso) a partir de un valor analógico, usada para control de velocidad de motores o intensidad luminosa.</p>
-          <div class="card-actions"><button class="btn" data-target="img-b27">Ver imagen / Demo</button></div>
-          <div class="card-media" id="img-b27"><img src="bloque27.png" alt="Bloque 27 - imagen"></div>
+          <p>Convierte señal analógica en modulación por ancho de pulso, controlando dispositivos como motores o luces.</p>
         </div>
-      </article>
+      </div>
 
       <!-- Bloque 28 -->
-      <article class="card" id="bloque28">
-        <div class="card-body">
+      <div id="bloque28" class="bloque-card">
+        <img src="bloque28.png" alt="Bloque 28" class="bloque-icono">
+        <div>
           <h3>Bloque 28 - Filtro analógico</h3>
-          <p>Suaviza una señal analógica reduciendo ruido y fluctuciones de alta frecuencia; mejora la estabilidad de lecturas y controles.</p>
-          <div class="card-actions"><button class="btn" data-target="img-b28">Ver imagen / Demo</button></div>
-          <div class="card-media" id="img-b28"><img src="bloque28.png" alt="Bloque 28 - imagen"></div>
+          <p>Suaviza variaciones de la señal eliminando ruidos o fluctuaciones indeseadas.</p>
         </div>
-      </article>
+      </div>
 
       <!-- Bloque 29 -->
-      <article class="card" id="bloque29">
-        <div class="card-body">
+      <div id="bloque29" class="bloque-card">
+        <img src="bloque29.png" alt="Bloque 29" class="bloque-icono">
+        <div>
           <h3>Bloque 29 - Máx/mín</h3>
-          <p>Detecta y registra temporalmente el valor máximo y mínimo alcanzado por una señal analógica durante un intervalo o ciclo.</p>
-          <div class="card-actions"><button class="btn" data-target="img-b29">Ver imagen / Demo</button></div>
-          <div class="card-media" id="img-b29"><img src="bloque29.png" alt="Bloque 29 - imagen"></div>
+          <p>Detecta y mantiene los valores máximo y mínimo de una señal analógica durante un intervalo determinado.</p>
         </div>
-      </article>
+      </div>
 
       <!-- Bloque 30 -->
-      <article class="card" id="bloque30">
-        <div class="card-body">
+      <div id="bloque30" class="bloque-card">
+        <img src="bloque30.png" alt="Bloque 30" class="bloque-icono">
+        <div>
           <h3>Bloque 30 - Valor medio</h3>
-          <p>Calcula el promedio (media) de una serie de muestras analógicas para ofrecer una lectura más estable y representativa.</p>
-          <div class="card-actions"><button class="btn" data-target="img-b30">Ver imagen / Demo</button></div>
-          <div class="card-media" id="img-b30"><img src="bloque30.png" alt="Bloque 30 - imagen"></div>
+          <p>Calcula el promedio de varias señales analógicas, proporcionando una salida estable representativa.</p>
         </div>
-      </article>
+      </div>
 
       <!-- Bloque 31 -->
-      <article class="card" id="bloque31">
-        <div class="card-body">
+      <div id="bloque31" class="bloque-card">
+        <img src="bloque31.png" alt="Bloque 31" class="bloque-icono">
+        <div>
           <h3>Bloque 31 - Relé autoenclavador</h3>
-          <p>Actúa como enclavamiento: una vez activado permanece en ese estado hasta recibir una señal de reset; usado para mantener procesos activos.</p>
-          <div class="card-actions"><button class="btn" data-target="img-b31">Ver imagen / Demo</button></div>
-          <div class="card-media" id="img-b31"><img src="bloque31.png" alt="Bloque 31 - imagen"></div>
+          <p>Permanece activado tras recibir una señal de entrada y se desactiva solo al recibir señal de reinicio.</p>
         </div>
-      </article>
+      </div>
 
       <!-- Bloque 32 -->
-      <article class="card" id="bloque32">
-        <div class="card-body">
+      <div id="bloque32" class="bloque-card">
+        <img src="bloque32.png" alt="Bloque 32" class="bloque-icono">
+        <div>
           <h3>Bloque 32 - Relé de impulsos</h3>
-          <p>Alterna el estado de la salida en cada pulso de entrada (flip-flop por pulsos), útil como conmutador bistable por entrada digital.</p>
-          <div class="card-actions"><button class="btn" data-target="img-b32">Ver imagen / Demo</button></div>
-          <div class="card-media" id="img-b32"><img src="bloque32.png" alt="Bloque 32 - imagen"></div>
+          <p>Alterna el estado de la salida cada vez que se recibe un pulso de entrada, actuando como interruptor bistable.</p>
         </div>
-      </article>
+      </div>
 
       <!-- Bloque 33 -->
-      <article class="card" id="bloque33">
-        <div class="card-body">
+      <div id="bloque33" class="bloque-card">
+        <img src="bloque33.png" alt="Bloque 33" class="bloque-icono">
+        <div>
           <h3>Bloque 33 - Texto de aviso</h3>
-          <p>Muestra mensajes o alertas personalizadas en pantallas o salidas de texto; útil para interfaces y reportes de estado.</p>
-          <div class="card-actions"><button class="btn" data-target="img-b33">Ver imagen / Demo</button></div>
-          <div class="card-media" id="img-b33"><img src="bloque33.png" alt="Bloque 33 - imagen"></div>
+          <p>Permite mostrar mensajes o alertas personalizados en la pantalla del LOGO! o sistemas conectados.</p>
         </div>
-      </article>
+      </div>
 
       <!-- Bloque 34 -->
-      <article class="card" id="bloque34">
-        <div class="card-body">
+      <div id="bloque34" class="bloque-card">
+        <img src="bloque34.png" alt="Bloque 34" class="bloque-icono">
+        <div>
           <h3>Bloque 34 - Interruptor de software</h3>
-          <p>Interruptor virtual controlado por variables internas o interfaz, permite activar lógica sin entrada física.</p>
-          <div class="card-actions"><button class="btn" data-target="img-b34">Ver imagen / Demo</button></div>
-          <div class="card-media" id="img-b34"><img src="bloque34.png" alt="Bloque 34 - imagen"></div>
+          <p>Actúa como interruptor virtual controlado desde la interfaz del LOGO! o el software, sin requerir entrada física.</p>
         </div>
-      </article>
+      </div>
 
       <!-- Bloque 35 -->
-      <article class="card" id="bloque35">
-        <div class="card-body">
+      <div id="bloque35" class="bloque-card">
+        <img src="bloque35.png" alt="Bloque 35" class="bloque-icono">
+        <div>
           <h3>Bloque 35 - Registro de desplazamiento</h3>
-          <p>Desplaza valores o bits a lo largo de un registro secuencial, usado en cadenas de control, leds desplazables o buffer de datos.</p>
-          <div class="card-actions"><button class="btn" data-target="img-b35">Ver imagen / Demo</button></div>
-          <div class="card-media" id="img-b35"><img src="bloque35.png" alt="Bloque 35 - imagen"></div>
+          <p>Desplaza valores de entrada de manera secuencial, útil para control de procesos en cadena o animaciones.</p>
         </div>
-      </article>
+      </div>
 
       <!-- Bloque 36 -->
-      <article class="card" id="bloque36">
-        <div class="card-body">
-          <h3>Bloque 36 - Detección de error de instrucción aritmética</h3>
-          <p>Supervisa operaciones aritméticas y genera señal de error si hay condiciones inválidas (ej. división por cero), permitiendo manejo seguro de cálculos.</p>
-          <div class="card-actions"><button class="btn" data-target="img-b36">Ver imagen / Demo</button></div>
-          <div class="card-media" id="img-b36"><img src="bloque36.png" alt="Bloque 36 - imagen"></div>
+      <div id="bloque36" class="bloque-card">
+        <img src="bloque36.png" alt="Bloque 36" class="bloque-icono">
+        <div>
+          <h3>Bloque 36 - Detección de error de la instrucción aritmética</h3>
+          <p>Supervisa operaciones matemáticas y genera señal si hay error, como división entre cero.</p>
         </div>
-      </article>
+      </div>
 
       <!-- Bloque 37 -->
-      <article class="card" id="bloque37">
-        <div class="card-body">
-          <h3>Bloque 37 - Convert flotante/entero</h3>
-          <p>Convierte valores en punto flotante a enteros (con truncamiento o redondeo según configuración) para compatibilizar datos entre bloques.</p>
-          <div class="card-actions"><button class="btn" data-target="img-b37">Ver imagen / Demo</button></div>
-          <div class="card-media" id="img-b37"><img src="bloque37.png" alt="Bloque 37 - imagen"></div>
+      <div id="bloque37" class="bloque-card">
+        <img src="bloque37.png" alt="Bloque 37" class="bloque-icono">
+        <div>
+          <h3>Bloque 37 - Convertidor flotante/entero</h3>
+          <p>Transforma valores en punto flotante a números enteros para compatibilidad con otros bloques.</p>
         </div>
-      </article>
+      </div>
 
       <!-- Bloque 38 -->
-      <article class="card" id="bloque38">
-        <div class="card-body">
-          <h3>Bloque 38 - Convert entero/flotante</h3>
-          <p>Convierte valores enteros a punto flotante para operaciones que requieren mayor precisión decimal en cálculos y controles.</p>
-          <div class="card-actions"><button class="btn" data-target="img-b38">Ver imagen / Demo</button></div>
-          <div class="card-media" id="img-b38"><img src="bloque38.png" alt="Bloque 38 - imagen"></div>
+      <div id="bloque38" class="bloque-card">
+        <img src="bloque38.png" alt="Bloque 38" class="bloque-icono">
+        <div>
+          <h3>Bloque 38 - Convertidor entero/flotante</h3>
+          <p>Convierte valores enteros a formato de punto flotante, permitiendo operaciones aritméticas más precisas.</p>
         </div>
-      </article>
+      </div>
 
     </div>
   </section>
 
-  <!-- DESCARGA -->
-  <section class="descarga">
-    <h3>Programa 1</h3>
-    <p>Puedes descargar el archivo del proyecto en formato <strong>.lsc</strong> con la programación para LOGO!Soft Comfort.</p>
-    <img src="image.png" alt="Imagen del proyecto (coloca archivo)" width="800" height="400">
-    <p><a class="download-btn" href="Programa 1.lsc" download>📥 Descargar Programa 1.lsc</a></p>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="site-footer">
+  <!-- Pie de página -->
+  <footer>
     <p>© 2025 | Proyecto PLC - ICC 2025 | Elaborado por Carlos Adonaí Talamantes González y Miguel Muro Rodríguez</p>
   </footer>
-
-  <!-- SCRIPTS: toggle imágenes / demos -->
-  <script>
-    document.querySelectorAll('.btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const target = btn.getAttribute('data-target');
-        const panel = document.getElementById(target);
-        if (!panel) return;
-        // toggle
-        if (panel.style.display === 'block') {
-          panel.style.display = 'none';
-          btn.innerText = 'Ver imagen / Demo';
-        } else {
-          // hide any other open panels to keep UI limpio
-          document.querySelectorAll('.card-media').forEach(c => {
-            if (c.id !== target) c.style.display = 'none';
-          });
-          panel.style.display = 'block';
-          btn.innerText = 'Ocultar demo';
-          // scroll into view a little (suave)
-          setTimeout(() => panel.scrollIntoView({behavior:'smooth', block:'center'}), 150);
-        }
-      });
-    });
-  </script>
-
-</main>
 </body>
 </html>
