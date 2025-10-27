@@ -9,29 +9,44 @@ body {
 header {
   background: #0059b3;
   color: white;
-  text-align: center;
   padding: 1rem;
-  position: relative;
+  text-align: center;
 }
 
-.escudo {
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.header-container .escudo {
   width: 60px;
-  height: 60px;
+  height: auto;
   object-fit: contain;
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 1rem;
 }
 
-header h1, header h2, header p {
-  display: inline-block;
-  vertical-align: middle;
-  margin: 0.2rem 0;
+.header-text h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.subtitulo {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.autores-profesor {
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+.autores-profesor p {
+  margin: 3px 0;
 }
 
 .contacto {
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
+  font-weight: bold;
 }
 
 .intro, .categorias {
@@ -59,55 +74,11 @@ header h1, header h2, header p {
   margin: 0.5rem;
   border-radius: 8px;
   font-size: 1.2rem;
-  transition: background 0.3s, transform 0.3s;
+  transition: background 0.3s;
 }
 
 .btn-categoria:hover {
   background: #003d80;
-  transform: scale(1.05);
-}
-
-.bloques-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 1rem;
-  max-width: 1200px;
-  margin: 2rem auto;
-}
-
-.bloque-card {
-  display: flex;
-  gap: 1rem;
-  background: white;
-  padding: 1rem;
-  border-radius: 10px;
-  align-items: flex-start;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-.bloque-card img {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-}
-
-.bloque-card h3 {
-  margin-top: 0;
-}
-
-.btn-ejemplo, .btn-regresar {
-  display: inline-block;
-  margin-top: 0.5rem;
-  background: #0073e6;
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  text-decoration: none;
-  transition: background 0.3s;
-}
-
-.btn-ejemplo:hover, .btn-regresar:hover {
-  background: #004c99;
 }
 
 footer {
