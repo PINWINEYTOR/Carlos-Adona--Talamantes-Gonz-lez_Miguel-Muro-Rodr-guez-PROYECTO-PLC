@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temporizadores - Proyecto PLC</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Bloques Temporizadores</h1>
+    <a href="index.html" class="btn-regresar">← Regresar</a>
+  </header>
+
+  <section class="bloques-grid">
+    <!-- Bloque 1 -->
+    <div class="bloque-card">
+      <img src="bloques/bloque1.png" alt="Bloque 1">
+      <div>
+        <h3>Bloque 1 - Retardo a la conexión</h3>
+        <p>El bloque TON retrasa la activación de la salida durante un tiempo determinado tras recibir la señal de encendido, evitando arranques inmediatos o estableciendo secuencias temporizadas.</p>
+        <a href="ejemplos.html" class="btn-ejemplo">Ir a ejemplo práctico</a>
+      </div>
+    </div>
+
+    <!-- Bloque 2 -->
+    <div class="bloque-card">
+      <img src="bloques/bloque2.png" alt="Bloque 2">
+      <div>
+        <h3>Bloque 2 - Retardo a la desconexión</h3>
+        <p>El bloque TOF mantiene la salida activada durante un tiempo tras desactivarse la entrada, útil para retrasar el apagado de equipos o procesos.</p>
+        <a href="ejemplos.html" class="btn-ejemplo">Ir a ejemplo práctico</a>
+      </div>
+    </div>
+
+    <!-- Bloque 3 -->
+    <div class="bloque-card">
+      <img src="bloques/bloque3.png" alt="Bloque 3">
+      <div>
+        <h3>Bloque 3 - Retardo conexión/desconexión</h3>
+        <p>Combina las funciones de retardo a la conexión y desconexión, permitiendo tiempos independientes de encendido y apagado en una misma salida.</p>
+        <a href="ejemplos.html" class="btn-ejemplo">Ir a ejemplo práctico</a>
+      </div>
+    </div>
+
+    <!-- Bloque 4 -->
+    <div class="bloque-card">
+      <img src="bloques/bloque4.png" alt="Bloque 4">
+      <div>
+        <h3>Bloque 4 - Retardo a la conexión con memoria</h3>
+        <p>Acumula el tiempo transcurrido aunque la señal se interrumpa, reanudando la temporización al restablecerse la entrada. Ideal para señales intermitentes.</p>
+        <a href="ejemplos.html" class="btn-ejemplo">Ir a ejemplo práctico</a>
+      </div>
+    </div>
+
+    <!-- Bloque 5 -->
+    <div class="bloque-card">
+      <img src="bloques/bloque5.png" alt="Bloque 5">
+      <div>
+        <h3>Bloque 5 - Relé de barrido (salida de impulsos)</h3>
+        <p>Genera impulsos periódicos mientras la entrada esté activa, definiendo duración y frecuencia de cada pulso. Útil para señales repetitivas.</p>
+        <a href="ejemplos.html" class="btn-ejemplo">Ir a ejemplo práctico</a>
+      </div>
+    </div>
+
+    <!-- Bloque 6 -->
+    <div class="bloque-card">
+      <img src="bloques/bloque6.png" alt="Bloque 6">
+      <div>
+        <h3>Bloque 6 - Relé de barrido activado por flancos</h3>
+        <p>Emite un solo pulso al detectar un cambio de estado en la señal de entrada (flanco ascendente o descendente).</p>
+        <a href="ejemplos.html" class="btn-ejemplo">Ir a ejemplo práctico</a>
+      </div>
+    </div>
+
+    <!-- Bloque 7 -->
+    <div class="bloque-card">
+      <img src="bloques/bloque7.png" alt="Bloque 7">
+      <div>
+        <h3>Bloque 7 - Reloj simétrico</h3>
+        <p>Genera una señal periódica de encendido y apagado con ciclos iguales, útil para sincronización de procesos.</p>
+        <a href="ejemplos.html" class="btn-ejemplo">Ir a ejemplo práctico</a>
+      </div>
+    </div>
+
+    <!-- Bloque 8 -->
+    <div class="bloque-card">
+      <img src="bloques/bloque8.png" alt="Bloque 8">
+      <div>
+        <h3>Bloque 8 - Generador de impulsos asíncrono</h3>
+        <p>Produce impulsos continuos con periodo y ciclo ajustable, independientemente de la entrada. Funciona como generador de reloj.</p>
+        <a href="ejemplos.html" class="btn-ejemplo">Ir a ejemplo práctico</a>
+      </div>
+    </div>
+
+    <!-- Bloque 9 -->
+    <div class="bloque-card">
+      <img src="bloques/bloque9.png" alt="Bloque 9">
+      <div>
+        <h3>Bloque 9 - Generador aleatorio</h3>
+        <p>Genera valores digitales o analógicos al azar dentro de un rango definido, usado para simulaciones o pruebas de variación.</p>
+        <a href="ejemplos.html" class="btn-ejemplo">Ir a ejemplo práctico</a>
+      </div>
+    </div>
+
+    <!-- Bloque 10 -->
+    <div class="bloque-card">
+      <img src="bloques/bloque10.png" alt="Bloque 10">
+      <div>
+        <h3>Bloque 10 - Interruptor de alumbrado para escalera</h3>
+        <p>Activa una salida por un tiempo predeterminado tras presionar un botón, simulando un control de iluminación temporizada.</p>
+        <a href="ejemplos.html" class="btn-ejemplo">Ir a ejemplo práctico</a>
+      </div>
+    </div>
+
+    <!-- Bloque 11 -->
+    <div class="bloque-card">
+      <img src="bloques/bloque11.png" alt="Bloque 11">
+      <div>
+        <h3>Bloque 11 - Interruptor bifuncional</h3>
+        <p>Alterna el estado de la salida (encendido/apagado) con cada pulsación de la entrada, simplificando el control manual.</p>
+        <a href="ejemplos.html" class="btn-ejemplo">Ir a ejemplo práctico</a>
+      </div>
+    </div>
+
+    <!-- Bloque 12 -->
+    <div class="bloque-card">
+      <img src="bloques/bloque12.png" alt="Bloque 12">
+      <div>
+        <h3>Bloque 12 - Temporizador semanal</h3>
+        <p>Permite programar activaciones y desactivaciones automáticas según días y horas de la semana, útil para tareas periódicas.</p>
+        <a href="ejemplos.html" class="btn-ejemplo">Ir a ejemplo práctico</a>
+      </div>
+    </div>
+
+    <!-- Bloque 13 -->
+    <div class="bloque-card">
+      <img src="bloques/bloque13.png" alt="Bloque 13">
+      <div>
+        <h3>Bloque 13 - Temporizador anual</h3>
+        <p>Controla eventos en fechas específicas del año, ideal para automatizaciones estacionales o de mantenimiento.</p>
+        <a href="ejemplos.html" class="btn-ejemplo">Ir a ejemplo práctico</a>
+      </div>
+    </div>
+
+    <!-- Bloque 14 -->
+    <div class="bloque-card">
+      <img src="bloques/bloque14.png" alt="Bloque 14">
+      <div>
+        <h3>Bloque 14 - Cronómetro / Reloj astronómico</h3>
+        <p>Mide intervalos de tiempo o ajusta salidas según la salida y puesta del sol. Solo disponible en versiones posteriores a 0BA7.</p>
+        <a href="ejemplos.html" class="btn-ejemplo">Ir a ejemplo práctico</a>
+      </div>
+    </div>
+
+  </section>
+</body>
+</html>
