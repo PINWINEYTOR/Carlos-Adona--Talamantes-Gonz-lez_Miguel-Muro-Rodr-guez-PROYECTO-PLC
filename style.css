@@ -1,284 +1,64 @@
-/* =======================================================
-   ESTILO GENERAL DEL SITIO
-   ======================================================= */
-body {
-    font-family: 'Segoe UI', Arial, sans-serif; /* Fuente más moderna */
-    margin: 0;
-    padding: 0;
-    background-color: #f4f6f8; /* Fondo ligeramente gris */
-    color: #222; /* Texto oscuro */
-    line-height: 1.6;
+/* ===========================
+   STYLE.CSS - Tema claro profesional
+   =========================== */
+
+/* Reset y tipografía */
+* { box-sizing: border-box; }
+html,body { margin:0; padding:0; font-family: 'Segoe UI', Arial, sans-serif; color:#1f2933; background:#f4f6f8; -webkit-font-smoothing:antialiased; }
+a { color: #0055aa; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* HEADER */
+.site-header { background: linear-gradient(135deg,#002b5c,#00509e); color:#fff; padding:28px 20px; box-shadow: 0 6px 20px rgba(2,6,23,0.15); }
+.header-inner { max-width:1200px; margin:0 auto; display:flex; align-items:center; gap:20px; justify-content:space-between; }
+.header-text h1 { margin:0; font-size:28px; letter-spacing:0.6px; }
+.header-text h2 { margin:6px 0 4px 0; font-weight:400; font-size:16px; opacity:0.95; }
+.header-text .meta { margin:0; font-size:14px; opacity:0.9; }
+.header-logo img { border-radius:12px; border:2px solid rgba(255,255,255,0.08); }
+
+/* MAIN / secciones */
+main { max-width:1200px; margin:30px auto; padding:0 16px; }
+section { background:#fff; border-radius:12px; padding:28px; margin-bottom:28px; box-shadow:0 6px 18px rgba(15,23,42,0.06); }
+.intro p { margin:0; color:#334155; line-height:1.6; }
+
+/* ÍNDICE */
+.indice h3 { margin-top:0; color:#0f1724; }
+.indice .small { margin-bottom:14px; color:#475569; font-size:0.95em; }
+.indice-list { columns:2; padding-left:0; list-style:none; margin:0; column-gap:40px; }
+.indice-list li { margin:8px 0; }
+@media (max-width:720px) { .indice-list { columns:1; } }
+
+/* BLOQUES: tarjetas */
+.bloques h2 { margin-top:0; color:#0f1724; }
+.card { margin:10px 0; border-radius:10px; overflow:hidden; border:1px solid #e6eefc; background:linear-gradient(180deg,#ffffff,#fbfdff); }
+.card-body { padding:18px; display:flex; flex-direction:column; gap:12px; }
+.card h3 { margin:0; font-size:1.05rem; color:#032e5b; }
+.card p { margin:0; color:#374151; text-align:justify; font-size:0.95rem; }
+
+/* acciones y media */
+.card-actions { display:flex; gap:10px; align-items:center; }
+.btn { background:#0055aa; color:#fff; border:0; padding:8px 12px; border-radius:8px; cursor:pointer; font-weight:600; transition:background 0.18s; }
+.btn:hover { background:#004289; }
+.card-media { display:none; margin-top:12px; padding-top:12px; border-top:1px dashed #e6eefc; text-align:center; }
+.card-media img { width:100%; max-width:520px; border-radius:8px; border:2px solid #e6eefc; box-shadow:0 6px 18px rgba(2,6,23,0.06); }
+
+/* DESCARGA */
+.descarga { text-align:center; }
+.download-btn { display:inline-block; background:#002b5c; color:#fff; padding:10px 18px; border-radius:8px; font-weight:700; margin-top:12px; }
+.download-btn:hover { background:#00407a; }
+
+/* FOOTER */
+.site-footer { text-align:center; padding:18px; background:#f8fafc; color:#475569; border-top:1px solid #e6eefc; border-radius:8px; }
+
+/* GRID LAYOUT (opcional para múltiples cards) */
+@media (min-width:980px) {
+  .bloques .grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
 }
 
-/* =======================================================
-   ENCABEZADO PRINCIPAL
-   ======================================================= */
-header {
-    background: linear-gradient(135deg, #002b5c, #00509e); /* Degradado azul */
-    color: white;
-    text-align: center;
-    padding: 50px 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra elegante */
+/* pequeños ajustes responsive */
+@media (max-width:720px) {
+  .header-inner { flex-direction:column; align-items:center; text-align:center; gap:12px; }
+  .header-logo img { width:120px; height:120px; }
+  section { padding:18px; border-radius:10px; }
+  .card-body { padding:14px; }
 }
-
-header h1 {
-    font-size: 2.5em;
-    margin-bottom: 10px;
-    letter-spacing: 1px; /* Espaciado entre letras */
-}
-
-header h2 {
-    font-weight: normal;
-    margin: 5px 0;
-}
-
-header p {
-    font-size: 1.1em;
-    opacity: 0.9; /* Hace el texto más suave */
-}
-
-/* =======================================================
-   SECCIONES GENERALES
-   ======================================================= */
-section {
-    background-color: white; /* Cada sección tiene fondo propio */
-    padding: 40px 25px;
-    max-width: 900px;
-    margin: 40px auto; /* Centra y separa las secciones */
-    border-radius: 10px; /* Bordes redondeados */
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
-    transition: transform 0.2s ease-in-out;
-}
-
-section:hover {
-    transform: scale(1.01); /* Sutil efecto al pasar el cursor */
-}
-
-/* =======================================================
-   TÍTULOS DE SECCIÓN
-   ======================================================= */
-h3 {
-    color: #003366;
-    border-left: 5px solid #00509e;
-    padding-left: 10px;
-    margin-bottom: 15px;
-}
-
-/* =======================================================
-   IMÁGENES CENTRADAS Y CON EFECTOS
-   ======================================================= */
-.imagen img {
-    display: block;
-    margin: 25px auto;
-    width: 80%;
-    max-width: 700px;
-    border: 3px solid #003366;
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2); /* Agrega profundidad */
-    transition: transform 0.3s ease;
-}
-
-.imagen img:hover {
-    transform: scale(1.05); /* Zoom suave al pasar el mouse */
-}
-
-/* =======================================================
-   PIE DE PÁGINA
-   ======================================================= */
-footer {
-    background-color: #002b5c;
-    color: white;
-    text-align: center;
-    padding: 20px 10px;
-    font-size: 0.9em;
-    margin-top: 50px;
-    box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.3);
-}
-
-/* =======================================================
-   RESPONSIVE DESIGN (Para móviles)
-   ======================================================= */
-@media (max-width: 600px) {
-    header h1 { font-size: 1.8em; }
-    section { padding: 25px 15px; margin: 20px; }
-    .imagen img { width: 100%; }
-}
-
-/* Sección de descarga */
-.descarga {
-    text-align: center;
-    margin-top: 40px;
-    padding: 30px;
-    background-color: #e9f2ff;
-    border-radius: 10px;
-    border: 1px solid #003366;
-}
-
-.descarga img {
-    margin: 20px 0;
-    border-radius: 10px;
-    border: 2px solid #003366;
-}
-
-/* Botón de descarga */
-.boton-descarga {
-    display: inline-block;
-    padding: 12px 25px;
-    background-color: #003366;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: bold;
-    transition: background-color 0.3s;
-}
-
-.boton-descarga:hover {
-    background-color: #0055aa;
-}
-
-.indice {
-  background-color: #f8f8f8;
-  border: 2px solid #ccc;
-  padding: 20px;
-  border-radius: 12px;
-  width: 80%;
-  margin: 30px auto;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.indice h3 {
-  text-align: center;
-  color: #003366;
-  margin-bottom: 15px;
-}
-
-.indice ul {
-  list-style: none;
-  columns: 2; /* Divide la lista en dos columnas */
-  padding: 0;
-}
-
-.indice li {
-  margin: 5px 0;
-}
-
-.indice a {
-  text-decoration: none;
-  color: #0066cc;
-  transition: 0.2s;
-}
-
-.indice a:hover {
-  color: #ff6600;
-  text-decoration: underline;
-}
-
-.bloques {
-  width: 85%;
-  margin: 30px auto;
-}
-
-.bloques h3 {
-  color: #003366;
-  border-bottom: 2px solid #ccc;
-  padding-bottom: 5px;
-  margin-top: 25px;
-}
-
-html {
-  scroll-behavior: smooth; /* desplazamiento suave */
-}
-
-/* --- Índice de bloques --- */
-.indice {
-  background: linear-gradient(135deg, #f0f6ff, #e8f0ff);
-  border: 2px solid #aac4ff;
-  border-radius: 15px;
-  padding: 25px;
-  width: 80%;
-  margin: 40px auto;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.indice h3 {
-  text-align: center;
-  color: #003366;
-  margin-bottom: 20px;
-}
-
-.indice ul {
-  list-style: none;
-  columns: 2;
-  padding: 0;
-}
-
-.indice li {
-  margin: 6px 0;
-}
-
-.indice a {
-  text-decoration: none;
-  color: #0055aa;
-  transition: all 0.2s ease;
-}
-
-.indice a:hover {
-  color: #ff6600;
-  font-weight: bold;
-  text-decoration: underline;
-}
-
-/* --- Sección de bloques --- */
-.bloques {
-  width: 90%;
-  margin: 50px auto;
-  text-align: center;
-}
-
-.grid-bloques {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 25px;
-  margin-top: 30px;
-}
-
-.bloque-card {
-  background: white;
-  border-radius: 15px;
-  padding: 20px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  border-top: 4px solid #0055aa;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.bloque-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-
-.bloque-card h3 {
-  color: #003366;
-  margin-bottom: 10px;
-}
-
-.bloque-card p {
-  color: #333;
-  font-size: 0.95em;
-  line-height: 1.4em;
-}
-
-/* --- Botón de descarga --- */
-.boton-descarga {
-  background-color: #0055aa;
-  color: white;
-  padding: 12px 20px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: 0.2s;
-}
-
-.boton-descarga:hover {
-  background-color:
-
-
