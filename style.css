@@ -156,3 +156,87 @@ footer {
 
   .bloque-icono { margin-bottom:10px; }
 }
+
+/* ============================================
+   AJUSTES VISUALES Y BLOQUE "PROYECTO 38 BLOQUES"
+   ============================================ */
+
+/* Forzar texto blanco en fondos azules */
+header, footer {
+  color: #ffffff !important;
+}
+
+header h1, header h2, header h3, header p,
+footer p {
+  color: #ffffff !important;
+}
+
+/* Bloque especial "Proyecto 38 bloques" */
+.proyecto-especial {
+  position: relative;
+  display: inline-block;
+  padding: 1.2rem 2.5rem;
+  margin: 2rem auto;
+  background: #000;
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border: 3px solid transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  box-shadow: 0 0 20px rgba(255,165,0,0.5);
+  text-align: center;
+}
+
+.proyecto-especial:hover {
+  transform: scale(1.05);
+}
+
+/* Animación de brillos legendarios */
+.proyecto-especial::before, .proyecto-especial::after {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background: conic-gradient(
+    from 0deg,
+    red, orange, yellow, green, cyan, blue, violet, red
+  );
+  animation: rotateGlow 5s linear infinite;
+  z-index: 0;
+  opacity: 0.8;
+}
+
+.proyecto-especial::after {
+  filter: blur(30px);
+  opacity: 0.5;
+}
+
+/* Efecto arcoíris en el texto */
+@keyframes rainbowText {
+  0% { color: red; }
+  16% { color: orange; }
+  32% { color: yellow; }
+  48% { color: green; }
+  64% { color: cyan; }
+  80% { color: blue; }
+  100% { color: violet; }
+}
+
+.proyecto-especial span {
+  position: relative;
+  z-index: 1;
+  animation: rainbowText 5s linear infinite;
+}
+
+/* Rotación del brillo */
+@keyframes rotateGlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
