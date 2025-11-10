@@ -15,13 +15,45 @@
 
   <section class="intro">
     <h3>Introducción</h3>
-    <p>Un PLC (Controlador Lógico Programable) es un dispositivo digital utilizado para automatizar procesos industriales mediante la supervisión y control de entradas y salidas. LOGO!Soft Comfort es un software de simulación y programación de PLCs LOGO! que permite crear, simular y probar proyectos de manera visual y didáctica.</p>
-    <p>El objetivo de este proyecto es presentar todos los bloques especiales disponibles, clasificados por categoría, mostrando sus funciones, descripciones e imágenes representativas, facilitando el aprendizaje y la aplicación práctica.</p>
+    <p>Un PLC (Controlador Lógico Programable) es un dispositivo electrónico diseñado para automatizar procesos industriales mediante la supervisión de señales de entrada y el control de salidas. LOGO!Soft Comfort, desarrollado por Siemens, es una herramienta de programación que permite simular, crear y verificar proyectos de control de manera visual e intuitiva. En esta página se explican conceptos técnicos y fundamentos esenciales para comprender el funcionamiento, cableado y seguridad de los sistemas PLC.</p>
+  </section>
+
+  <section class="conceptos">
+    <h3>Remanencia</h3>
+    <p>La <strong>remanencia</strong> es la capacidad del PLC para conservar ciertos valores o estados en memoria aun después de un corte de energía. Gracias a esta característica, el controlador puede continuar su operación con las mismas condiciones previas al restablecerse la alimentación eléctrica. Es fundamental en aplicaciones donde se requiere mantener contadores, temporizadores o banderas de control sin reinicio.</p>
+
+    <h3>Protección activa</h3>
+    <p>La <strong>protección activa</strong> incluye los dispositivos y medidas que protegen al sistema y al operario ante fallas eléctricas, sobrecorrientes o cortocircuitos. Entre ellos destacan los fusibles, disyuntores, relés térmicos, contactores y la conexión a tierra. Su propósito es interrumpir la energía ante un fallo, evitando daños en el PLC o en los actuadores conectados.</p>
+
+    <h3>Cómo se conecta un PLC</h3>
+    <p>El cableado de un PLC se realiza interconectando correctamente sus terminales de entrada (<strong>I</strong>) y salida (<strong>Q</strong>), además de su fuente de alimentación. Las entradas se asocian con sensores o pulsadores, mientras que las salidas controlan dispositivos como motores, lámparas o válvulas. Se recomienda seguir los diagramas eléctricos del fabricante, mantener el orden en los conductores y utilizar protecciones adecuadas.</p>
+    <p><strong>Video educativo:</strong> El siguiente recurso audiovisual, de uso libre y ajeno a este proyecto, se comparte con fines educativos para facilitar la comprensión del cableado básico de un PLC:  
+    <a href="https://www.youtube.com/watch?v=l8h3kR7K2Co" target="_blank">Ver en YouTube: Cómo cablear un PLC</a></p>
+
+    <h3>Protocolos básicos de seguridad en PLC</h3>
+    <p>En el entorno industrial, la seguridad es prioritaria. Los protocolos básicos incluyen: desconectar la energía antes de manipular el sistema, identificar correctamente la polaridad de las conexiones, mantener el cableado ordenado, emplear protecciones contra sobrecorriente, realizar simulaciones previas antes de la ejecución física y utilizar equipo de protección personal. Seguir estos lineamientos evita daños eléctricos y garantiza la integridad del operador.</p>
+
+    <h3>Significado de P, N, A, NA, NC, I y Q</h3>
+    <p>En los esquemas de PLC se utilizan siglas que indican el tipo de señal o componente. <strong>P</strong> representa el polo positivo o fase, mientras que <strong>N</strong> indica el neutro o negativo; <strong>A</strong> suele referirse a corriente alterna.  
+    Los pulsadores y contactos se clasifican como <strong>NA</strong> (Normalmente Abierto) o <strong>NC</strong> (Normalmente Cerrado). Un pulsador <strong>P-NA</strong> permite el paso de corriente solo al presionarlo, mientras que un <strong>P-NC</strong> interrumpe la corriente al ser presionado. Estas definiciones son esenciales para comprender cómo reacciona cada entrada en el circuito lógico.  
+    La letra <strong>I</strong> designa las entradas del PLC (por ejemplo, sensores o pulsadores), y <strong>Q</strong> identifica las salidas, que pueden activar motores, relés o lámparas. Conocer esta simbología es fundamental para interpretar correctamente los diagramas de conexión y funcionamiento.</p>
+
+    <h3>Valores lógicos 1 y 0</h3>
+    <p>Los PLC operan con lógica binaria. El valor <strong>1</strong> indica un estado activo, encendido o verdadero (energizado), mientras que el valor <strong>0</strong> representa un estado inactivo, apagado o falso (sin señal). Esta representación digital simplifica la lectura del estado de los dispositivos conectados y la ejecución de las condiciones programadas.</p>
+
+    <h3>Letra “X” en las salidas Q</h3>
+    <p>En la nomenclatura del PLC, las salidas se representan como <strong>Qx.y</strong>, donde <strong>Q</strong> identifica el módulo de salida, <strong>x</strong> indica el número del módulo y <strong>y</strong> el número del canal. Por ejemplo, <strong>Q1.0</strong> corresponde a la primera salida del primer módulo. La “x” no se refiere a una letra literal, sino a una posición dentro del sistema de expansión.</p>
+
+    <h3>Encendido de motores en Q</h3>
+    <p>Cuando una salida <strong>Q</strong> se activa, el PLC no alimenta directamente al motor, sino que envía una señal de control a un <strong>contactor</strong> o relé, el cual se encarga de cerrar el circuito de potencia que energiza el motor. En otras palabras, el PLC realiza el control lógico, mientras que los dispositivos externos ejecutan la conmutación eléctrica real.</p>
+
+    <h3>Relés térmicos (OL)</h3>
+    <p>Los relés térmicos, conocidos como <strong>OL (Overload Relays)</strong>, son dispositivos que protegen los motores contra sobrecargas. Cuando la corriente supera el valor nominal del motor durante un tiempo prolongado, el relé OL interrumpe el circuito de control, deteniendo la operación y evitando daños por sobrecalentamiento. Son esenciales dentro de los sistemas de protección activa en automatización industrial.</p>
   </section>
 
   <section class="categorias">
     <h3>Bloques especiales</h3>
-    <p>Un bloque especial es una función predefinida del PLC que realiza tareas temporizadas, de control, aritméticas o de señal analógica y digital.</p>
+    <p>Los bloques especiales son funciones predefinidas del PLC que permiten ejecutar tareas de temporización, conteo, comparación y procesamiento analógico o digital. A continuación, se pueden consultar las categorías principales y sus respectivos bloques con ejemplos prácticos.</p>
     <div class="botones-categoria">
       <a href="Temporizadores.html" class="btn-categoria">Temporizadores</a>
       <a href="Contadores.html" class="btn-categoria">Contadores</a>
