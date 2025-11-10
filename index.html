@@ -18,6 +18,11 @@
     <p>Un PLC (Controlador Lógico Programable) es un dispositivo electrónico diseñado para automatizar procesos industriales mediante la supervisión de señales de entrada y el control de salidas. LOGO!Soft Comfort, desarrollado por Siemens, es una herramienta de programación que permite simular, crear y verificar proyectos de control de manera visual e intuitiva. En esta página se explican conceptos técnicos y fundamentos esenciales para comprender el funcionamiento, cableado y seguridad de los sistemas PLC.</p>
   </section>
 
+  <section class="objetivo">
+    <h3>Objetivo del proyecto</h3>
+    <p>El propósito de este proyecto es brindar una guía didáctica y accesible sobre el uso del software LOGO!Soft Comfort y el funcionamiento de los bloques especiales del PLC Siemens LOGO!, promoviendo el aprendizaje práctico de los estudiantes de Ingeniería en Computación y Automatización. Se busca desarrollar la comprensión de los conceptos técnicos que intervienen en el diseño, programación, cableado y seguridad de los sistemas de control industrial.</p>
+  </section>
+
   <section class="conceptos">
     <h3>Remanencia</h3>
     <p>La <strong>remanencia</strong> es la capacidad del PLC para conservar ciertos valores o estados en memoria aun después de un corte de energía. Gracias a esta característica, el controlador puede continuar su operación con las mismas condiciones previas al restablecerse la alimentación eléctrica. Es fundamental en aplicaciones donde se requiere mantener contadores, temporizadores o banderas de control sin reinicio.</p>
@@ -27,28 +32,28 @@
 
     <h3>Cómo se conecta un PLC</h3>
     <p>El cableado de un PLC se realiza interconectando correctamente sus terminales de entrada (<strong>I</strong>) y salida (<strong>Q</strong>), además de su fuente de alimentación. Las entradas se asocian con sensores o pulsadores, mientras que las salidas controlan dispositivos como motores, lámparas o válvulas. Se recomienda seguir los diagramas eléctricos del fabricante, mantener el orden en los conductores y utilizar protecciones adecuadas.</p>
-    <p><strong>Video educativo:</strong> El siguiente recurso audiovisual, de uso libre y ajeno a este proyecto, se comparte con fines educativos para facilitar la comprensión del cableado básico de un PLC:  
-    <a href="https://www.youtube.com/watch?v=l8h3kR7K2Co" target="_blank">Ver en YouTube: Cómo cablear un PLC</a></p>
+    <p><strong>Video educativo:</strong> El siguiente recurso audiovisual se comparte con fines meramente educativos y explicativos, y no pertenece a los autores de este proyecto. Su propósito es facilitar la comprensión del cableado de un PLC:  
+    <a href="https://youtu.be/tn-xb_l4Fhc" target="_blank">Ver en YouTube: Cómo cablear un PLC</a></p>
 
     <h3>Protocolos básicos de seguridad en PLC</h3>
     <p>En el entorno industrial, la seguridad es prioritaria. Los protocolos básicos incluyen: desconectar la energía antes de manipular el sistema, identificar correctamente la polaridad de las conexiones, mantener el cableado ordenado, emplear protecciones contra sobrecorriente, realizar simulaciones previas antes de la ejecución física y utilizar equipo de protección personal. Seguir estos lineamientos evita daños eléctricos y garantiza la integridad del operador.</p>
 
     <h3>Significado de P, N, A, NA, NC, I y Q</h3>
-    <p>En los esquemas de PLC se utilizan siglas que indican el tipo de señal o componente. <strong>P</strong> representa el polo positivo o fase, mientras que <strong>N</strong> indica el neutro o negativo; <strong>A</strong> suele referirse a corriente alterna.  
-    Los pulsadores y contactos se clasifican como <strong>NA</strong> (Normalmente Abierto) o <strong>NC</strong> (Normalmente Cerrado). Un pulsador <strong>P-NA</strong> permite el paso de corriente solo al presionarlo, mientras que un <strong>P-NC</strong> interrumpe la corriente al ser presionado. Estas definiciones son esenciales para comprender cómo reacciona cada entrada en el circuito lógico.  
-    La letra <strong>I</strong> designa las entradas del PLC (por ejemplo, sensores o pulsadores), y <strong>Q</strong> identifica las salidas, que pueden activar motores, relés o lámparas. Conocer esta simbología es fundamental para interpretar correctamente los diagramas de conexión y funcionamiento.</p>
+    <p>En los esquemas eléctricos de un PLC se utilizan siglas que indican el tipo de componente o señal. <strong>P</strong> representa el polo positivo o fase, mientras que <strong>N</strong> indica el neutro o negativo. La letra <strong>A</strong> puede asociarse a corriente alterna.  
+    Los pulsadores y contactos tienen designaciones como <strong>NA</strong> (Normalmente Abierto) o <strong>NC</strong> (Normalmente Cerrado). Un pulsador <strong>P-NA</strong> permite el paso de corriente únicamente al presionarlo, mientras que un <strong>P-NC</strong> interrumpe la corriente al ser presionado. Asimismo, <strong>I-NA</strong> indica una entrada normalmente abierta. Conocer estas abreviaciones es vital para interpretar correctamente los esquemas lógicos del PLC.</p>
+    <p>Por otro lado, las letras <strong>I</strong> y <strong>Q</strong> designan las entradas y salidas del controlador. Las entradas (<strong>I</strong>) reciben señales de sensores o pulsadores, y las salidas (<strong>Q</strong>) controlan actuadores, motores o luces. Esta simbología permite identificar con precisión el flujo de señal en el sistema.</p>
 
     <h3>Valores lógicos 1 y 0</h3>
-    <p>Los PLC operan con lógica binaria. El valor <strong>1</strong> indica un estado activo, encendido o verdadero (energizado), mientras que el valor <strong>0</strong> representa un estado inactivo, apagado o falso (sin señal). Esta representación digital simplifica la lectura del estado de los dispositivos conectados y la ejecución de las condiciones programadas.</p>
+    <p>Los PLC trabajan bajo el principio de la lógica binaria. Un valor <strong>1</strong> representa un estado activo, encendido o verdadero (energizado), mientras que un valor <strong>0</strong> representa un estado inactivo, apagado o falso. Estos valores son esenciales para interpretar las condiciones del sistema y la ejecución de las operaciones lógicas internas.</p>
 
     <h3>Letra “X” en las salidas Q</h3>
-    <p>En la nomenclatura del PLC, las salidas se representan como <strong>Qx.y</strong>, donde <strong>Q</strong> identifica el módulo de salida, <strong>x</strong> indica el número del módulo y <strong>y</strong> el número del canal. Por ejemplo, <strong>Q1.0</strong> corresponde a la primera salida del primer módulo. La “x” no se refiere a una letra literal, sino a una posición dentro del sistema de expansión.</p>
+    <p>En los esquemas del PLC, las salidas suelen identificarse como <strong>Qx.y</strong>, donde <strong>Q</strong> representa el módulo de salida, <strong>x</strong> el número del módulo, y <strong>y</strong> el número del canal. Por ejemplo, <strong>Q1.0</strong> corresponde a la primera salida del primer módulo. Esta nomenclatura permite diferenciar múltiples módulos y canales dentro del sistema de expansión del PLC.</p>
 
     <h3>Encendido de motores en Q</h3>
-    <p>Cuando una salida <strong>Q</strong> se activa, el PLC no alimenta directamente al motor, sino que envía una señal de control a un <strong>contactor</strong> o relé, el cual se encarga de cerrar el circuito de potencia que energiza el motor. En otras palabras, el PLC realiza el control lógico, mientras que los dispositivos externos ejecutan la conmutación eléctrica real.</p>
+    <p>Cuando una salida <strong>Q</strong> se activa, el PLC no alimenta directamente al motor, sino que envía una señal de control a un <strong>contactor</strong> o relé intermedio, encargado de cerrar el circuito de potencia. De esta forma, el PLC actúa como cerebro lógico del sistema, y los dispositivos externos realizan la conmutación eléctrica real. Esto evita sobrecargar el controlador y protege sus componentes internos.</p>
 
     <h3>Relés térmicos (OL)</h3>
-    <p>Los relés térmicos, conocidos como <strong>OL (Overload Relays)</strong>, son dispositivos que protegen los motores contra sobrecargas. Cuando la corriente supera el valor nominal del motor durante un tiempo prolongado, el relé OL interrumpe el circuito de control, deteniendo la operación y evitando daños por sobrecalentamiento. Son esenciales dentro de los sistemas de protección activa en automatización industrial.</p>
+    <p>Los relés térmicos, conocidos como <strong>OL (Overload Relays)</strong>, protegen los motores eléctricos ante sobrecargas prolongadas. Al detectar que la corriente supera el valor nominal del motor, interrumpen el circuito de control para evitar daños por sobrecalentamiento. Son dispositivos esenciales en la protección activa y en la seguridad del sistema de automatización.</p>
   </section>
 
   <section class="categorias">
