@@ -5,6 +5,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Proyecto PLC - ICC 2025</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* ==== BOTÓN ESPECIAL "PROYECTO 38 BLOQUES" ==== */
+    .btn-proyecto {
+      position: relative;
+      display: inline-block;
+      background: linear-gradient(45deg, #0059b3, #007bff, #00c3ff);
+      color: white;
+      text-decoration: none;
+      padding: 1.2rem 2.5rem;
+      margin: 1rem auto;
+      border-radius: 12px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 0 25px rgba(0, 123, 255, 0.6);
+      animation: pulseLight 3s infinite;
+    }
+    .btn-proyecto:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 35px rgba(0, 195, 255, 0.8);
+    }
+    .btn-proyecto::before, .btn-proyecto::after {
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      top: -50%;
+      left: -50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.6) 8%, transparent 70%);
+      animation: shineMove 6s linear infinite;
+      mix-blend-mode: screen;
+    }
+    .btn-proyecto::after {
+      animation-delay: 3s;
+    }
+
+    /* 🔹 Animaciones de brillo y pulso */
+    @keyframes shineMove {
+      0% { transform: rotate(0deg) translateX(0); opacity: 0.8; }
+      50% { transform: rotate(180deg) translateX(30px); opacity: 1; }
+      100% { transform: rotate(360deg) translateX(0); opacity: 0.8; }
+    }
+    @keyframes pulseLight {
+      0%, 100% { box-shadow: 0 0 20px rgba(0, 195, 255, 0.5); }
+      50% { box-shadow: 0 0 40px rgba(0, 195, 255, 0.9); }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -64,6 +114,11 @@
       <a href="Contadores.html" class="btn-categoria">Contadores</a>
       <a href="Analogicos.html" class="btn-categoria">Analógicos</a>
       <a href="Otros.html" class="btn-categoria">Otros</a>
+    </div>
+
+    <!-- ✨ BOTÓN CON ANIMACIÓN Y BRILLOS ✨ -->
+    <div style="text-align:center; margin-top:2rem;">
+      <a href="proyecto.html" class="btn-proyecto">Proyecto 38 Bloques</a>
     </div>
   </section>
 
