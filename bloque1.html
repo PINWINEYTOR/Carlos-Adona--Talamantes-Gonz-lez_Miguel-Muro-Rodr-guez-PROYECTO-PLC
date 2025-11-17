@@ -1,79 +1,324 @@
-    <div class="controls" role="toolbar" aria-label="Controles del bloque">
-      <a href="index.html" class="btn" title="Regresar al inicio">← Inicio</a>
-      <a href="#descargar" class="btn" title="Ir a descarga">Descarga del programa</a>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bloque 1 – Retardo a la conexión | Proyecto PLC – ICC 2025</title>
+  <style>
+    :root{
+      --bg:#f4f6f8;
+      --card:#ffffff;
+      --accent1:#ff8c00;
+      --accent2:#6610f2;
+      --text:#111827;
+      --muted:#6b7280;
+      --glass: rgba(255,255,255,0.7);
+      --shadow: 0 10px 30px rgba(16,24,40,0.08);
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(1200px 600px at 10% 10%, rgba(102,16,242,0.06), transparent 12%),
+        radial-gradient(900px 400px at 90% 90%, rgba(255,140,0,0.04), transparent 12%),
+        var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+
+    /* Header / Footer iguales a index */
+    header{
+      position:relative;
+      height:220px;
+      overflow:hidden;
+      background:linear-gradient(180deg,#08121c 0%, #0b1220 60%);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+    }
+    header .cabecera-texto{ position:relative; z-index:6; text-align:center; pointer-events:none; }
+    header .cabecera-texto h1{ margin:0; font-size:1.6rem; letter-spacing:0.4px }
+    header .cabecera-texto p{ margin:6px 0 0; opacity:0.95; font-size:0.9rem }
+    #uan{ position:absolute; width:120px; top:50%; left:12%; transform:translateY(-50%); z-index:5; }
+    #mexico{ position:absolute; top:0; right:-60%; width:100%; height:100%; object-fit:cover; z-index:2; filter:brightness(0.5); opacity:0.9; }
+
+    main { padding:28px 18px 80px; max-width:1100px; margin: -40px auto 0; }
+
+    /* Bloque principal */
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), var(--card));
+      border-radius:var(--radius);
+      padding:22px;
+      box-shadow:var(--shadow);
+      border: 1px solid rgba(16,24,40,0.04);
+      overflow:hidden;
+    }
+
+    .hero {
+      display:flex;
+      align-items:center;
+      gap:18px;
+      margin-bottom:14px;
+      flex-wrap:wrap;
+    }
+
+    .badge {
+      background: linear-gradient(90deg,var(--accent2), #a46cff);
+      color:white;
+      padding:10px 14px;
+      border-radius:12px;
+      font-weight:800;
+      font-size:0.95rem;
+      box-shadow: 0 8px 24px rgba(102,16,242,0.12);
+    }
+
+    .title {
+      flex:1 1 auto;
+    }
+    .title h2{ margin:0; font-size:1.4rem; letter-spacing:0.2px }
+    .title p{ margin:6px 0 0; color:var(--muted); font-size:0.95rem }
+
+    .actions { display:flex; gap:10px; align-items:center; }
+
+    .btn {
+      display:inline-block;
+      padding:10px 14px;
+      border-radius:10px;
+      background:#0b1220;
+      color:#fff;
+      text-decoration:none;
+      font-weight:700;
+      font-size:0.95rem;
+      border:0;
+      box-shadow: 0 8px 26px rgba(11,18,32,0.12);
+    }
+    .btn.secondary{
+      background:transparent;
+      color:var(--text);
+      border:1px solid rgba(16,24,40,0.06);
+    }
+
+    /* Grid content */
+    .layout {
+      display:grid;
+      grid-template-columns: 1fr 300px;
+      gap:18px;
+      align-items:start;
+    }
+
+    .main-media{
+      background:linear-gradient(180deg,#fff,#fbfbff);
+      border-radius:12px;
+      padding:14px;
+      border:1px solid rgba(16,24,40,0.04);
+      box-shadow: 0 6px 18px rgba(13,20,30,0.04);
+    }
+
+    .img-large{
+      width:100%;
+      height:auto;
+      border-radius:10px;
+      display:block;
+      object-fit:contain;
+      box-shadow: 0 8px 28px rgba(16,24,40,0.06);
+      border:1px solid rgba(16,24,40,0.03);
+    }
+
+    .meta { display:flex; gap:10px; margin-top:10px; align-items:center; flex-wrap:wrap; }
+
+    .muted{ color:var(--muted) }
+    .kpi { background:rgba(6,10,20,0.03); border-radius:10px; padding:8px 10px; font-weight:700; color:var(--muted); font-size:0.9rem }
+
+    /* Section editable desde código (no editable desde UI) */
+    .content-block {
+      margin-top:14px;
+      font-size:1rem;
+      color:var(--text);
+    }
+    .content-block h3{ margin:0 0 10px 0; font-size:1.05rem }
+    .content-block p{ margin:0 0 12px 0; color:var(--text) }
+
+    /* Visuales */
+    .visuals { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-top:10px; }
+    .visuals img{ width:100%; border-radius:8px; box-shadow: 0 8px 20px rgba(16,24,40,0.05); border:1px solid rgba(16,24,40,0.03) }
+
+    /* Sidebar */
+    aside.card-side{
+      position:sticky;
+      top:22px;
+      align-self:start;
+      padding:14px;
+      border-radius:12px;
+      background:linear-gradient(180deg,#fff,#fbfbff);
+      box-shadow: 0 6px 18px rgba(13,20,30,0.04);
+      border:1px solid rgba(16,24,40,0.04);
+    }
+    aside .side-title{ font-weight:800; margin-bottom:8px }
+    aside ul{ padding-left:18px; margin:8px 0 0 0; color:var(--muted) }
+    aside .download-btn {
+      display:block;
+      margin-top:12px;
+      text-align:center;
+      padding:10px 12px;
+      border-radius:10px;
+      background:linear-gradient(90deg,var(--accent2), #9b5cff);
+      color:#fff;
+      text-decoration:none;
+      font-weight:800;
+      box-shadow: 0 10px 30px rgba(102,16,242,0.12);
+    }
+
+    footer{
+      margin-top:36px;
+      background:#0b1220;
+      color:#ffffff;
+      padding:22px 18px;
+      text-align:center;
+      border-top:6px solid rgba(255,140,0,0.08);
+    }
+
+    @media (max-width:920px){
+      .layout{ grid-template-columns: 1fr; }
+      aside.card-side{ position:relative; top:0 }
+      header{ height:200px }
+      #uan{ width:110px; left:8% }
+      .visuals{ grid-template-columns:1fr 1fr }
+    }
+    @media (max-width:560px){
+      .visuals{ grid-template-columns:1fr }
+    }
+
+    /* small helper for code-editing hints */
+    .hint {
+      display:block;
+      padding:8px 10px;
+      border-radius:8px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(250,250,252,0.9));
+      border:1px dashed rgba(16,24,40,0.04);
+      color:var(--muted);
+      font-size:0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER: idéntico al index para coherencia -->
+  <header id="mainHeader">
+    <img id="mexico" src="mexico.png" alt="Bandera de México" aria-hidden="true">
+    <img id="uan" src="uan.png" alt="Logo UAN">
+    <div class="cabecera-texto">
+      <h1>Proyecto PLC – ICC 2025</h1>
+      <p>Autores: Carlos Adonaí Talamantes González &amp; Miguel Muro Rodríguez — Ingeniería en Computación | Universidad Autónoma de Nayarit</p>
     </div>
-  </div>
+  </header>
 
-  <div class="contenido-bloque" role="region" aria-label="Contenido del bloque 1">
-    <div class="col-main">
-      <!-- Imagen principal del bloque -->
-      <figure>
-        <img src="bloques/bloque1.png" alt="Imagen del Bloque 1 - Retardo a la conexión" class="img-large">
-        <figcaption class="muted" style="font-size:0.9rem; margin-top:8px">Esquema o icono del bloque (carpeta: /bloques, archivo: bloque1)</figcaption>
-      </figure>
-
-      <!-- Espacio para escribir la descripción del bloque -->
-      <div style="margin-top:16px">
-        <label for="descripcion">Descripción detallada</label>
-        <textarea id="descripcion" placeholder="Escribe aquí la descripción del bloque, su propósito, parámetros y uso en el programa..."></textarea>
-      </div>
-
-      <!-- Texto libre -->
-      <div style="margin-top:14px">
-        <label for="comentario1">Observaciones / Explicación (parte 1)</label>
-        <textarea id="comentario1" placeholder="Añade observaciones, notas de uso o ejemplos de aplicación..."></textarea>
-      </div>
-
-      <!-- Imagen visual1s -->
-      <div class="visuales" aria-label="Visuales del bloque">
-        <div>
-          <label>Visual corto (visual1s)</label>
-          <img src="visual/visual1s.png" alt="Visual corto del Bloque 1 - visual1s">
+  <main>
+    <div class="card" role="main" aria-labelledby="bloque-title">
+      <div class="hero" role="banner">
+        <div class="badge">Bloque 1</div>
+        <div class="title">
+          <h2 id="bloque-title">1. Retardo a la conexión</h2>
+          <p class="muted">Temporizador que retrasa la activación de la salida después de recibir entrada.</p>
         </div>
 
-        <!-- Texto libre 2 -->
-        <div>
-          <label for="comentario2">Observaciones / Explicación (parte 2)</label>
-          <textarea id="comentario2" placeholder="Más notas, resultados esperados o comentarios sobre la simulación..."></textarea>
-        </div>
-
-        <!-- Imagen visual1d -->
-        <div>
-          <label>Visual detalle (visual1d)</label>
-          <img src="visual/visual1d.png" alt="Visual detallado del Bloque 1 - visual1d">
+        <div class="actions" aria-hidden="false">
+          <a href="index.html" class="btn" title="Volver al inicio">← Inicio</a>
+          <a href="#descargar" class="btn secondary" title="Ir a la descarga">Ir a descarga</a>
         </div>
       </div>
 
-      <!-- Descarga -->
-      <div id="descargar" style="margin-top:14px">
-        <label>Descargar programa</label>
-        <div class="downloads">
-          <!-- El archivo 'Bloque1' se encuentra en la carpeta 'programa' (coloca la extensión real en el servidor si es necesario) -->
-          <a href="programa/Bloque1" download title="Descargar Bloque1">Descargar programa: Bloque1</a>
-          <span class="muted" style="margin-left:6px; font-weight:600">Ubicación: /programa/Bloque1</span>
+      <div class="layout">
+        <!-- COLUMNA PRINCIPAL -->
+        <div>
+          <div class="main-media">
+            <!-- Imagen principal desde /bloques -->
+            <img src="bloques/bloque1.png" alt="Bloque 1 - icono/esquema" class="img-large">
+
+            <div class="meta" aria-hidden="true">
+              <span class="kpi">Tipo: Temporizador</span>
+              <span class="kpi">Entrada: I1</span>
+              <span class="kpi">Salida: Q1</span>
+            </div>
+
+            <!-- CONTENIDO QUE EL USUARIO PUEDE EDITAR DIRECTAMENTE EN EL CÓDIGO -->
+            <div class="content-block" id="descripcion-bloque">
+              <h3>Descripción</h3>
+              <!-- EDITAR: coloca aquí la descripción del bloque directamente en el HTML -->
+              <p id="descripcion">
+                <!-- EDITAR: Reemplaza este párrafo por tu descripción. Ejemplo: "El bloque retardo a la conexión permite..." -->
+              </p>
+
+              <h3>Notas de uso y parámetros</h3>
+              <!-- EDITAR: añade más párrafos o listas según necesites -->
+              <p id="notas">
+                <!-- EDITAR: Añade aquí notas sobre parámetros, ejemplos de configuración o comportamiento. -->
+              </p>
+
+              <div class="visuals" aria-label="Visuales">
+                <!-- Imagen corta: visual1s -->
+                <figure style="margin:0">
+                  <img src="visual/visual1s.png" alt="Visual corto (visual1s)">
+                  <figcaption class="muted" style="font-size:0.86rem; margin-top:6px">Visual corto — visual/visual1s.png</figcaption>
+                </figure>
+
+                <!-- Imagen detalle: visual1d -->
+                <figure style="margin:0">
+                  <img src="visual/visual1d.png" alt="Visual detallado (visual1d)">
+                  <figcaption class="muted" style="font-size:0.86rem; margin-top:6px">Visual detallado — visual/visual1d.png</figcaption>
+                </figure>
+              </div>
+            </div>
+
+            <!-- Espacio informativo para quien edite desde código -->
+            <div style="margin-top:12px">
+              <span class="hint">Para modificar textos, abre este archivo (bloque1.html) y edita el contenido de los elementos con id="descripcion" y id="notas".</span>
+            </div>
+          </div>
         </div>
+
+        <!-- SIDEBAR -->
+        <aside class="card-side" aria-labelledby="side-title">
+          <div id="side-title" class="side-title">Acciones</div>
+
+          <div>
+            <strong class="muted">Descarga del programa</strong>
+            <!-- EDITAR: si el archivo tiene extensión (por ejemplo .lsc), ponla en el href -->
+            <a id="descargar" href="programa/Bloque1.lsc" class="download-btn" download title="Descargar programa Bloque1">Descargar Bloque1</a>
+            <p class="muted" style="font-size:0.86rem; margin-top:8px">Ruta: /programa/Bloque1.lsc — cambia el nombre/extensión en el HTML si tu archivo es diferente.</p>
+          </div>
+
+          <div style="margin-top:12px">
+            <strong class="muted">Parámetros sugeridos</strong>
+            <ul>
+              <li>Tiempo: 0.5 s – 9999 s</li>
+              <li>Reset manual: opcional</li>
+            </ul>
+          </div>
+
+          <div style="margin-top:12px">
+            <a href="index.html" class="btn" style="width:100%; display:inline-block; text-align:center">Volver al inicio</a>
+          </div>
+        </aside>
       </div>
     </div>
+  </main>
 
-    <!-- Columna lateral: información resumida y ayuda -->
-    <aside class="col-side" aria-labelledby="info-lateral">
-      <div style="width:100%; text-align:center">
-        <strong id="info-lateral">Detalles rápidos</strong>
-        <p class="muted" style="margin:8px 0 0; font-size:0.95rem">Tipo: Temporizador - Retardo a la conexión</p>
+  <!-- FOOTER: idéntico al index para coherencia -->
+  <footer>
+    <div style="max-width:1100px;margin:0 auto;">
+      <p>© 2025 | Proyecto PLC - ICC 2025 | Carlos Adonaí Talamantes González &amp; Miguel Muro Rodríguez</p>
+      <p>Profesor: Ingeniero Ignacio Chávez Arcega | Materia: PLC</p>
+      <div class="redes">
+        <a href="https://www.facebook.com/share/14NZuwbbVwg/" target="_blank">Facebook de Carlos</a>
+        <a href="https://www.facebook.com/share/1EZ4xDHeC3/" target="_blank">Facebook de Miguel</a>
       </div>
+    </div>
+  </footer>
 
-      <div style="width:100%; margin-top:6px">
-        <label>Parámetros sugeridos</label>
-        <ul style="margin:6px 0 0; padding-left:18px; color:var(--muted)">
-          <li>Tiempo de retardo: 0.5s – 9999s</li>
-          <li>Entrada: I1</li>
-          <li>Salida: Q1</li>
-        </ul>
-      </div>
-
-      <div style="width:100%; margin-top:auto; text-align:center">
-        <a href="index.html" class="btn" title="Volver al inicio">Regresar al inicio</a>
-      </div>
-    </aside>
-  </div>
-</section>
+</body>
+</html>
