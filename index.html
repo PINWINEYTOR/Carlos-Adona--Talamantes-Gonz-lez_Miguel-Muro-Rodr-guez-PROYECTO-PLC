@@ -17,7 +17,6 @@
       --muted:#6c757d;
       --shadow: 0 6px 24px rgba(16,24,40,0.08);
       --card-radius:12px;
-      --readmore-max: 320px;
     }
     *{box-sizing:border-box}
     body{
@@ -90,14 +89,9 @@
       border-radius:16px;
     }
 
-    /*
-      The user requested NO spinning light and instead a colored contour around the button.
-      Therefore the container has no rotating glow. The button itself will have a static
-      four-color contour (blue / green / yellow / red) and the label text will cycle
-      discretely between those four colors.
-    */
+    /* The contour around the button: a subtle rotating ring made of four colored arcs.
+       It's animated but gentle (slow) so it feels "legendary" without being annoying. */
 
-    /* Button: black background as requested */
     .btn-legendario{
       position:relative;
       display:inline-block;
@@ -117,12 +111,11 @@
     }
     .btn-legendario:hover{ transform:translateY(-6px); box-shadow:0 26px 80px rgba(2,6,23,0.5) }
 
-    /* Colored contour (static, four segments) around the button:
-       implemented with ::before as an outer ring and ::after as the inner fill (so the ring shows). */
+    /* rotating ring: made with conic-gradient but blurred and rotated slowly */
     .btn-legendario::before{
       content:"";
       position:absolute;
-      inset:-6px;                /* ring thickness */
+      inset:-8px;
       z-index:1;
       border-radius:20px;
       background: conic-gradient(
@@ -132,22 +125,29 @@
         var(--accent3) 180deg 270deg,
         var(--accent4) 270deg 360deg
       );
+      filter: blur(8px) saturate(1.05);
+      opacity:0.85;
       pointer-events:none;
+      transform: rotate(0deg);
+      animation: ringRotate 12s linear infinite;
     }
-    /* Inner overlay to create the ring effect (matches button background) */
+    /* inner overlay to create ring appearance (so the button body hides center) */
     .btn-legendario::after{
       content:"";
       position:absolute;
-      inset:2px;
+      inset:4px;
       z-index:2;
       border-radius:12px;
       background: #050505;
       pointer-events:none;
     }
 
-    /* Text of the button cycles discretely among four colors (blue, green, yellow, red).
-       The approach: a long linear-gradient containing the four colors repeated; we animate the
-       background-position with steps(4) so the visible color snaps every quarter of the animation. */
+    @keyframes ringRotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* Text: smoothly fades between the four colors (diffused transition) */
     .btn-legendario .btnText{
       position:relative;
       z-index:4;
@@ -159,11 +159,15 @@
       background-clip: text;
       color: transparent;
       -webkit-text-fill-color: transparent;
-      animation: textCycle 4s steps(4) infinite;
+      animation: textBlend 8s linear infinite;
     }
-    @keyframes textCycle {
-      from { background-position:   0% 50%; }
-      to   { background-position: 300% 50%; }
+    /* Smooth, continuous movement so colors diffuse into each other */
+    @keyframes textBlend {
+      0%   { background-position:   0% 50%; }
+      25%  { background-position:  33% 50%; }
+      50%  { background-position:  66% 50%; }
+      75%  { background-position: 100% 50%; }
+      100% { background-position:   0% 50%; }
     }
 
     .indice-ventana{
@@ -271,39 +275,6 @@
     main p { color:var(--text); line-height:1.7; margin:0.6rem 0; }
     main .muted { color:var(--muted); }
 
-    /* Read-more styling for long paragraphs (dynamic and comfortable reading) */
-    .readmore {
-      position:relative;
-      overflow:hidden;
-      max-height: var(--readmore-max);
-      transition: max-height .36s cubic-bezier(.2,.9,.2,1);
-    }
-    .readmore.expanded { max-height: 2000px; }
-
-    .readmore::after{
-      content:"";
-      position:absolute;
-      left:0; right:0; bottom:0;
-      height:56px;
-      background: linear-gradient(180deg, rgba(244,246,248,0), rgba(244,246,248,0.95));
-      pointer-events:none;
-      transition: opacity .22s ease;
-    }
-    .readmore.expanded::after{ opacity:0; display:none }
-
-    .readmore-toggle{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      margin-top:8px;
-      background:transparent;
-      border:0;
-      color:var(--accent1);
-      font-weight:700;
-      cursor:pointer;
-      padding:8px 0;
-    }
-
     .downloads{ display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:10px }
     .downloads a{ display:inline-block; padding:10px 14px; background:#0b1220; color:#fff; border-radius:10px; text-decoration:none; font-weight:700; }
     .downloads .secondary{
@@ -319,7 +290,6 @@
       #uan{ width:120px }
       .btn-legendario{ width:100%; padding:14px 18px }
       .indice-grid{ grid-template-columns: repeat(1,1fr) }
-      :root{ --readmore-max: 220px; }
     }
   </style>
 </head>
@@ -337,7 +307,7 @@
 
   <main>
     <div class="legendario-container" aria-hidden="false">
-      <button id="toggleBtn" class="btn-legendario" aria-expanded="false" aria-controls="indiceVentana">
+      <button id="toggleBtn" class="btn-legendario" aria-expanded="false" aria-controls="indiceVentana" title="Mostrar índice de bloques">
         <span class="btnText">PROYECTO 38 BLOQUES</span>
       </button>
     </div>
@@ -351,54 +321,31 @@
       <div id="indiceGrid" class="indice-grid" role="list"></div>
     </div>
 
-    <!-- CONTENIDO PRINCIPAL (COLORES OSCUROS PARA LEGIBILIDAD) -->
+    <!-- CONTENIDO PRINCIPAL: removed 'Leer más' behavior and video section as requested -->
     <section class="seccion" aria-labelledby="intro-title">
       <h2 id="intro-title">Introducción</h2>
-      <div class="readmore">
-        <p>Un PLC (Controlador Lógico Programable) es un dispositivo electrónico diseñado para automatizar procesos industriales mediante la supervisión de señales de entrada y el control de salidas. LOGO!Soft Comfort, desarrollado por Siemens, es una herramienta de programación que permite simular, crear y verificar proyectos de control de manera visual e intuitiva. En esta página verás explicaciones técnicas, ejemplos prácticos y recursos descargables para aprender a diseñar, programar y verificar sistemas de control usando bloques especiales del PLC LOGO!.</p>
-        <p>Los bloques especiales son funciones predefinidas con entrada/salida y parámetros que facilitan la creación de estructuras complejas sin programar desde cero. Entre los temas que cubre este proyecto están temporizadores, contadores, bloques analógicos, generadores y herramientas para supervisión y comunicación.</p>
-      </div>
-      <button class="readmore-toggle" aria-expanded="false" aria-controls="intro-title">Leer más ▾</button>
+      <p>Un PLC (Controlador Lógico Programable) es un dispositivo electrónico diseñado para automatizar procesos industriales mediante la supervisión de señales de entrada y el control de salidas. LOGO!Soft Comfort, desarrollado por Siemens, es una herramienta de programación que permite simular, crear y verificar proyectos de control de manera visual e intuitiva. En esta página verás explicaciones técnicas, ejemplos prácticos y recursos descargables para aprender a diseñar, programar y verificar sistemas de control usando bloques especiales del PLC LOGO!.</p>
+      <p>Los bloques especiales son funciones predefinidas con entrada/salida y parámetros que facilitan la creación de estructuras complejas sin programar desde cero. Entre los temas que cubre este proyecto están temporizadores, contadores, bloques analógicos, generadores y herramientas para supervisión y comunicación.</p>
     </section>
 
     <section class="seccion" aria-labelledby="objetivo-title">
       <h2 id="objetivo-title">Objetivo del proyecto</h2>
-      <div class="readmore">
-        <p>Brindar una guía didáctica sobre el uso de LOGO!Soft Comfort, con especial énfasis en los bloques especiales del PLC Siemens LOGO!. El proyecto combina teoría, visuales y ejemplos prácticos para estudiantes de Ingeniería y Automatización, permitiendo practicar programación y simulación antes de la implementación física.</p>
-      </div>
-      <button class="readmore-toggle" aria-expanded="false">Leer más ▾</button>
+      <p>Brindar una guía didáctica sobre el uso de LOGO!Soft Comfort, con especial énfasis en los bloques especiales del PLC Siemens LOGO!. El proyecto combina teoría, visuales y ejemplos prácticos para estudiantes de Ingeniería y Automatización, permitiendo practicar programación y simulación antes de la implementación física.</p>
     </section>
 
     <section class="seccion" aria-labelledby="remanencia-title">
       <h2 id="remanencia-title">Remanencia</h2>
-      <div class="readmore">
-        <p>La remanencia es la capacidad del PLC para conservar ciertos valores o estados en memoria incluso después de una interrupción de energía. Esto permite continuar con las mismas condiciones tras restablecer la alimentación, esencial para contadores, temporizadores y banderas de control que no deben reiniciarse automáticamente.</p>
-      </div>
-      <button class="readmore-toggle" aria-expanded="false">Leer más ▾</button>
+      <p>La remanencia es la capacidad del PLC para conservar ciertos valores o estados en memoria incluso después de una interrupción de energía. Esto permite continuar con las mismas condiciones tras restablecer la alimentación, esencial para contadores, temporizadores y banderas de control que no deben reiniciarse automáticamente.</p>
     </section>
 
     <section class="seccion" aria-labelledby="proteccion-title">
       <h2 id="proteccion-title">Protección activa</h2>
-      <div class="readmore">
-        <p>Incluye dispositivos y medidas que protegen el sistema y al operario ante fallas: fusibles, disyuntores, relés térmicos, contactores y toma de tierra. La protección busca interrumpir energía ante fallos, evitando daños a PLC y actuadores.</p>
-      </div>
-      <button class="readmore-toggle" aria-expanded="false">Leer más ▾</button>
+      <p>Incluye dispositivos y medidas que protegen el sistema y al operario ante fallas: fusibles, disyuntores, relés térmicos, contactores y toma de tierra. La protección busca interrumpir energía ante fallos, evitando daños a PLC y actuadores.</p>
     </section>
 
     <section class="seccion" aria-labelledby="conexion-title">
       <h2 id="conexion-title">Cómo se conecta un PLC</h2>
-      <div class="readmore">
-        <p>El cableado interconecta entradas (I), salidas (Q) y la fuente de alimentación. Las entradas se conectan a sensores y pulsadores; las salidas controlan contactores, relés o actuadores. Mantener diagramas claros, usar protecciones y seguir el manual del fabricante es imprescindible.</p>
-      </div>
-      <button class="readmore-toggle" aria-expanded="false">Leer más ▾</button>
-    </section>
-
-    <section class="seccion" aria-labelledby="video-title">
-      <h2 id="video-title">Video educativo</h2>
-      <p>Recurso audiovisual con fines educativos:</p>
-      <div class="videos">
-        <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">Ver en YouTube: Cómo cablear un PLC</a>
-      </div>
+      <p>El cableado interconecta entradas (I), salidas (Q) y la fuente de alimentación. Las entradas se conectan a sensores y pulsadores; las salidas controlan contactores, relés o actuadores. Mantener diagramas claros, usar protecciones y seguir el manual del fabricante es imprescindible.</p>
     </section>
 
     <section class="seccion" aria-labelledby="descargas-title">
@@ -406,9 +353,8 @@
       <p>Descarga el manual o la carpeta con los programas (.lsc).</p>
       <div class="downloads" role="group" aria-label="Descargas del proyecto">
         <a href="Manual.pdf" download target="_blank" rel="noopener noreferrer">Descargar manual (PDF)</a>
-        <a href="programa.zip" download class="secondary" title="Descargar carpeta /programa en zip">Descargar carpeta /programa (.zip)</a>
-        <a href="programa/" class="secondary" title="Abrir carpeta /programa">Abrir carpeta /programa</a>
-        <span style="color:var(--muted); font-weight:700; margin-left:6px">Nota: los archivos .lsc se encuentran en la carpeta /programa</span>
+        <!-- the requested direct download of the programs folder -->
+        <a href="programa.zip" download target="_blank" rel="noopener noreferrer">Descargar carpeta programa (.zip)</a>
       </div>
     </section>
 
@@ -432,7 +378,7 @@
       document.getElementById('mainHeader').classList.add('loaded');
     });
 
-    // Updated, corrected block names as provided by the user (1..38)
+    // User-provided, corrected block names (38 items).
     const nombres = [
       "Retardo en la conexión",
       "Retardo a la desconexión",
@@ -497,12 +443,12 @@
 
         const a = document.createElement('a');
         a.href = `bloque${num}.html`;
-        a.textContent = `Bloque ${num} — ${nombres[i]}`;
-        a.setAttribute('title', `Abrir Bloque ${num} — ${nombres[i]}`);
+        a.textContent = `Bloque ${num} - ${nombres[i]}`;
+        a.setAttribute('title', `Abrir Bloque ${num} - ${nombres[i]}`);
 
-        // short descriptor showing filename
+        // show filename as subtle hint (kept for debugging, not required)
         const small = document.createElement('small');
-        small.textContent = `Página: bloque${num}.html`;
+        small.textContent = `bloque${num}.html`;
 
         linkWrapper.appendChild(a);
         linkWrapper.appendChild(small);
@@ -543,30 +489,11 @@
       }
     });
 
-    // Read-more toggles: collapse long paragraphs for better readability
-    document.querySelectorAll('.seccion').forEach(section => {
-      const p = section.querySelector('.readmore');
-      const btnRm = section.querySelector('.readmore-toggle');
-      if(p && btnRm){
-        const textLength = Array.from(p.querySelectorAll('p')).map(n => n.textContent.length).reduce((a,b)=>a+b,0);
-        if(textLength < 260){
-          btnRm.style.display = 'none';
-        } else {
-          btnRm.addEventListener('click', () => {
-            const isExpanded = p.classList.toggle('expanded');
-            btnRm.setAttribute('aria-expanded', String(isExpanded));
-            btnRm.textContent = isExpanded ? 'Mostrar menos ▴' : 'Leer más ▾';
-          });
-        }
-      }
-    });
-
     // Small animation keyframes injected
     (function(){
       const s = document.createElement('style'); document.head.appendChild(s);
       s.sheet.insertRule('@keyframes fadeInSlide { from { opacity:0; transform: translateY(-8px) scale(.995) } to { opacity:1; transform: translateY(0) scale(1) } }',0);
       s.sheet.insertRule('@keyframes fadeOut { from { opacity:1; transform: translateY(0) } to { opacity:0; transform: translateY(-6px) } }',1);
-      // textCycle keyframes are declared in CSS above
     })();
 
     // Keyboard activation for links (Enter or Space)
