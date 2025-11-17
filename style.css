@@ -240,3 +240,12 @@ footer p {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+
+footer a {
+  color: white !important;
+}
+footer a:hover {
+  color: #dce6ff !important; /* un blanco azulado suave */
+}
+
