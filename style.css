@@ -146,6 +146,14 @@ footer {
   color:white;
 }
 
+/* 🔥 NUEVO: Forzar enlaces blancos en el pie de página */
+footer a {
+  color: white !important;
+}
+footer a:hover {
+  color: #e8eeff !important; /* blanco suave */
+}
+
 /* RESPONSIVE */
 @media(max-width:720px){
   .bloque-card {
@@ -240,12 +248,3 @@ footer p {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
-
-
-footer a {
-  color: white !important;
-}
-footer a:hover {
-  color: #dce6ff !important; /* un blanco azulado suave */
-}
-
