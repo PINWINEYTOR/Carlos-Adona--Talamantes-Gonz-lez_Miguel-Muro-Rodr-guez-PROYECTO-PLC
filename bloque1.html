@@ -127,6 +127,7 @@
       object-fit:contain;
       box-shadow: 0 8px 28px rgba(16,24,40,0.06);
       border:1px solid rgba(16,24,40,0.03);
+      cursor:zoom-in;
     }
 
     .meta { display:flex; gap:10px; margin-top:10px; align-items:center; flex-wrap:wrap; }
@@ -145,7 +146,7 @@
 
     /* Visuales: aumentar espacio entre imágenes */
     .visuals { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-top:16px; }
-    .visuals img{ width:100%; border-radius:8px; box-shadow: 0 8px 20px rgba(16,24,40,0.05); border:1px solid rgba(16,24,40,0.03); display:block }
+    .visuals img{ width:100%; border-radius:8px; box-shadow: 0 8px 20px rgba(16,24,40,0.05); border:1px solid rgba(16,24,40,0.03); display:block; cursor:zoom-in; }
 
     /* Pinout list styling */
     .pinout { margin:8px 0 0 0; padding-left:18px; color:var(--text); }
@@ -187,6 +188,54 @@
       border-top:6px solid rgba(255,140,0,0.08);
     }
 
+    /* Lightbox / modal */
+    .lightbox-overlay {
+      position:fixed;
+      inset:0;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      background:rgba(2,6,23,0.75);
+      z-index:9999;
+      padding:20px;
+    }
+    .lightbox-overlay.active { display:flex; }
+    .lightbox-content {
+      position:relative;
+      max-width:calc(100% - 80px);
+      max-height:calc(100% - 80px);
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      align-items:center;
+      justify-content:center;
+    }
+    .lightbox-img {
+      max-width:100%;
+      max-height:100%;
+      border-radius:8px;
+      box-shadow: 0 12px 40px rgba(2,6,23,0.6);
+      background:#fff;
+      object-fit:contain;
+    }
+    .lightbox-caption {
+      color:#fff;
+      font-size:0.95rem;
+      text-align:center;
+    }
+    .lightbox-close {
+      position:absolute;
+      top:-8px;
+      right:-8px;
+      background:#111;
+      color:#fff;
+      border-radius:999px;
+      padding:6px 10px;
+      border:0;
+      cursor:pointer;
+      font-weight:700;
+    }
+
     @media (max-width:920px){
       .layout{ grid-template-columns: 1fr; }
       aside.card-side{ position:relative; top:0 }
@@ -198,16 +247,6 @@
       .visuals{ grid-template-columns:1fr }
     }
 
-    /* small helper for code-editing hints */
-    .hint {
-      display:block;
-      padding:8px 10px;
-      border-radius:8px;
-      background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(250,250,252,0.9));
-      border:1px dashed rgba(16,24,40,0.04);
-      color:var(--muted);
-      font-size:0.9rem;
-    }
   </style>
 </head>
 <body>
@@ -242,7 +281,7 @@
         <div>
           <div class="main-media">
             <!-- Imagen principal desde /bloques -->
-            <img src="bloques/bloque1.png" alt="Bloque 1 - icono/esquema" class="img-large">
+            <img src="bloques/bloque1.png" alt="Bloque 1 - icono/esquema" class="img-large" tabindex="0" role="button" aria-label="Abrir imagen en grande">
 
             <div class="meta" aria-hidden="true">
               <span class="kpi">Tipo: Temporizador</span>
@@ -287,22 +326,20 @@
               <div class="visuals" aria-label="Visuales">
                 <!-- Imagen corta: visual1s -->
                 <figure style="margin:0">
-                  <img src="visual/visual1s.png" alt="Visual corto (visual1s)">
+                  <img src="visual/visual1s.png" alt="Visual corto (visual1s)" tabindex="0" role="button" aria-label="Abrir imagen visual corto">
                   <figcaption class="muted" style="font-size:0.86rem; margin-top:6px">Visual corto — visual/visual1s.png</figcaption>
                 </figure>
 
                 <!-- Imagen detalle: visual1d -->
                 <figure style="margin:0">
-                  <img src="visual/visual1d.png" alt="Visual detallado (visual1d)">
+                  <img src="visual/visual1d.png" alt="Visual detallado (visual1d)" tabindex="0" role="button" aria-label="Abrir imagen visual detallado">
                   <figcaption class="muted" style="font-size:0.86rem; margin-top:6px">Visual detallado — visual/visual1d.png</figcaption>
                 </figure>
               </div>
             </div>
 
-            <!-- Espacio informativo para quien edite desde código -->
-            <div style="margin-top:12px">
-              <span class="hint">IMPORTANTE: Para cambiar la "Descripción" o las "Notas" edita este archivo (bloque1.html) y modifica el contenido entre los elementos con id="descripcion" y id="notas".</span>
-            </div>
+            <!-- (Se eliminó la advertencia/hint que estaba aquí según tu pedido) -->
+
           </div>
         </div>
 
@@ -333,6 +370,15 @@
     </div>
   </main>
 
+  <!-- Lightbox overlay -->
+  <div id="lightbox" class="lightbox-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="lightbox-content">
+      <button class="lightbox-close" aria-label="Cerrar imagen">&times;</button>
+      <img src="" alt="" class="lightbox-img">
+      <div class="lightbox-caption" id="lightbox-caption" aria-live="polite"></div>
+    </div>
+  </div>
+
   <!-- FOOTER: idéntico al index para coherencia -->
   <footer>
     <div style="max-width:1100px;margin:0 auto;">
@@ -345,5 +391,58 @@
     </div>
   </footer>
 
+  <script>
+    (function(){
+      const lightbox = document.getElementById('lightbox');
+      const lbImg = lightbox.querySelector('.lightbox-img');
+      const lbCaption = document.getElementById('lightbox-caption');
+      const lbClose = lightbox.querySelector('.lightbox-close');
+
+      function openLightbox(src, alt, captionText) {
+        lbImg.src = src;
+        lbImg.alt = alt || '';
+        lbCaption.textContent = captionText || '';
+        lightbox.classList.add('active');
+        lightbox.setAttribute('aria-hidden', 'false');
+        // prevent background scrolling
+        document.body.style.overflow = 'hidden';
+        // focus close button for accessibility
+        lbClose.focus();
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('active');
+        lightbox.setAttribute('aria-hidden', 'true');
+        lbImg.src = '';
+        lbImg.alt = '';
+        lbCaption.textContent = '';
+        document.body.style.overflow = '';
+      }
+
+      // Delegation: imágenes clicables (main image + visual images)
+      const clickables = document.querySelectorAll('.img-large, .visuals img');
+      clickables.forEach(img => {
+        // make keyboard accessible
+        img.addEventListener('click', () => {
+          openLightbox(img.src, img.alt, img.getAttribute('data-caption') || img.alt || '');
+        });
+        img.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openLightbox(img.src, img.alt, img.getAttribute('data-caption') || img.alt || '');
+          }
+        });
+      });
+
+      // close handlers
+      lbClose.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
+      });
+    })();
+  </script>
 </body>
 </html>
