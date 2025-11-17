@@ -1,1 +1,79 @@
+    <div class="controls" role="toolbar" aria-label="Controles del bloque">
+      <a href="index.html" class="btn" title="Regresar al inicio">← Inicio</a>
+      <a href="#descargar" class="btn" title="Ir a descarga">Descarga del programa</a>
+    </div>
+  </div>
 
+  <div class="contenido-bloque" role="region" aria-label="Contenido del bloque 1">
+    <div class="col-main">
+      <!-- Imagen principal del bloque -->
+      <figure>
+        <img src="bloques/bloque1.png" alt="Imagen del Bloque 1 - Retardo a la conexión" class="img-large">
+        <figcaption class="muted" style="font-size:0.9rem; margin-top:8px">Esquema o icono del bloque (carpeta: /bloques, archivo: bloque1)</figcaption>
+      </figure>
+
+      <!-- Espacio para escribir la descripción del bloque -->
+      <div style="margin-top:16px">
+        <label for="descripcion">Descripción detallada</label>
+        <textarea id="descripcion" placeholder="Escribe aquí la descripción del bloque, su propósito, parámetros y uso en el programa..."></textarea>
+      </div>
+
+      <!-- Texto libre -->
+      <div style="margin-top:14px">
+        <label for="comentario1">Observaciones / Explicación (parte 1)</label>
+        <textarea id="comentario1" placeholder="Añade observaciones, notas de uso o ejemplos de aplicación..."></textarea>
+      </div>
+
+      <!-- Imagen visual1s -->
+      <div class="visuales" aria-label="Visuales del bloque">
+        <div>
+          <label>Visual corto (visual1s)</label>
+          <img src="visual/visual1s.png" alt="Visual corto del Bloque 1 - visual1s">
+        </div>
+
+        <!-- Texto libre 2 -->
+        <div>
+          <label for="comentario2">Observaciones / Explicación (parte 2)</label>
+          <textarea id="comentario2" placeholder="Más notas, resultados esperados o comentarios sobre la simulación..."></textarea>
+        </div>
+
+        <!-- Imagen visual1d -->
+        <div>
+          <label>Visual detalle (visual1d)</label>
+          <img src="visual/visual1d.png" alt="Visual detallado del Bloque 1 - visual1d">
+        </div>
+      </div>
+
+      <!-- Descarga -->
+      <div id="descargar" style="margin-top:14px">
+        <label>Descargar programa</label>
+        <div class="downloads">
+          <!-- El archivo 'Bloque1' se encuentra en la carpeta 'programa' (coloca la extensión real en el servidor si es necesario) -->
+          <a href="programa/Bloque1" download title="Descargar Bloque1">Descargar programa: Bloque1</a>
+          <span class="muted" style="margin-left:6px; font-weight:600">Ubicación: /programa/Bloque1</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna lateral: información resumida y ayuda -->
+    <aside class="col-side" aria-labelledby="info-lateral">
+      <div style="width:100%; text-align:center">
+        <strong id="info-lateral">Detalles rápidos</strong>
+        <p class="muted" style="margin:8px 0 0; font-size:0.95rem">Tipo: Temporizador - Retardo a la conexión</p>
+      </div>
+
+      <div style="width:100%; margin-top:6px">
+        <label>Parámetros sugeridos</label>
+        <ul style="margin:6px 0 0; padding-left:18px; color:var(--muted)">
+          <li>Tiempo de retardo: 0.5s – 9999s</li>
+          <li>Entrada: I1</li>
+          <li>Salida: Q1</li>
+        </ul>
+      </div>
+
+      <div style="width:100%; margin-top:auto; text-align:center">
+        <a href="index.html" class="btn" title="Volver al inicio">Regresar al inicio</a>
+      </div>
+    </aside>
+  </div>
+</section>
