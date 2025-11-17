@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Información sobre PLC</title>
+
+<style>
+    body{
+        font-family: Arial, sans-serif;
+        margin:0;
+        padding:20px;
+        background:#eaf6ff;
+        color:#213;
+    }
+
+    /* Imagen en esquina superior izquierda */
+    .logo{
+        position:absolute;
+        top:10px;
+        left:10px;
+        width:90px;
+    }
+
+    /* Encabezados con texto blanco */
+    h1, h2{
+        color:#ffffff;
+        background:#003366;
+        padding:10px;
+        border-radius:5px;
+        margin-top:20px;
+    }
+
+    p{
+        color:#213;
+        line-height:1.6;
+    }
+
+    .contenedor{
+        margin-left:120px; /* Para que la imagen no tape el texto */
+    }
+
+    .video{
+        margin-top:20px;
+        padding:15px;
+        background:#d0e7ff;
+        border-radius:8px;
+    }
+</style>
+</head>
+
+<body>
+
+<!-- LOGO ESQUINA SUPERIOR IZQUIERDA -->
+<img src="uan.png" class="logo">
+
+<div class="contenedor">
+
+<h1>PLC – Conceptos básicos y conexiones</h1>
+
+<h2>1. ¿Qué es la remanencia?</h2>
+<p>
+La remanencia es la capacidad de un PLC para conservar ciertos valores o datos aun cuando se interrumpe la alimentación eléctrica. 
+Esto significa que variables, marcas o temporizadores configurados como remanentes seguirán manteniendo su último valor al volver a energizar el sistema.
+</p>
+
+<h2>2. ¿Qué es la protección activa?</h2>
+<p>
+La protección activa se refiere a un conjunto de medidas electrónicas y lógicas implementadas dentro del PLC para evitar daños en el sistema. 
+Incluye detección de sobrecorriente, protección contra cortocircuitos, supervisión térmica y monitoreo interno del estado del procesador, 
+garantizando que el controlador opere de manera segura y estable.
+</p>
+
+<h2>3. ¿Cómo se conecta un PLC?</h2>
+<p>
+La conexión de un PLC implica cablear correctamente la fuente de alimentación, las entradas digitales o analógicas, las salidas, los sensores, 
+los actuadores y, cuando aplica, la comunicación con otros dispositivos. La forma básica de conexión incluye:
+</p>
+<ul>
+    <li>Alimentar el PLC con su voltaje adecuado (24 VDC, 120 VAC o 220 VAC).</li>
+    <li>Conectar sensores a entradas digitales o analógicas.</li>
+    <li>Conectar actuadores como relevadores, contactores o solenoides a las salidas.</li>
+    <li>Establecer el cableado de tierra física para protección.</li>
+    <li>Configurar la comunicación si el sistema requiere intercambio de datos.</li>
+</ul>
+
+<div class="video">
+<h2>Video recomendado: Cableado de un PLC</h2>
+<p>
+Aquí tienes un video explicativo paso a paso sobre cómo cablear un PLC:
+</p>
+<p>
+<a href="https://youtu.be/i19d6kG6N2g" target="_blank">
+https://youtu.be/i19d6kG6N2g
+</a>
+</p>
+</div>
+
+</div>
+
+</body>
+</html>
