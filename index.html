@@ -1,360 +1,218 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Proyecto PLC – ICC 2025</title>
-  <style>
-    :root{
-      --bg:#f4f6f8;
-      --card:#ffffff;
-      --accent1:#ff8c00;
-      --accent2:#6610f2;
-      --text:#222;
-      --muted:#6c757d;
-      --shadow: 0 6px 24px rgba(16,24,40,0.08);
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: "Segoe UI", Roboto, Arial, sans-serif;
-      background:var(--bg);
-      color:var(--text);
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proyecto PLC - 38 Bloques Especiales</title>
 
-    /* HEADER */
-    header{
-      position:relative;
-      height:260px;
-      overflow:hidden;
-      background:#0b1220;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-    header .cabecera-texto{
-      position:relative;
-      z-index:3;
-      text-align:center;
-      color:#fff;
-      text-shadow:0 2px 8px rgba(0,0,0,0.6);
-      pointer-events:none;
-    }
-    header .cabecera-texto h1{ margin:0; font-size:2rem; letter-spacing:0.6px }
-    header .cabecera-texto p{ margin:6px 0 0; opacity:0.9; font-size:0.95rem }
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #1a1a1a;
+            color: white;
+        }
 
-    /* Logo UAN: sin filtros de color */
-    #uan {
-      position:absolute;
-      width:160px;
-      top:50%;
-      left:50%;
-      transform:translate(-50%,-50%);
-      z-index:4;
-      transition: left 0.9s cubic-bezier(.2,.9,.2,1), transform 0.9s;
-    }
-    header.loaded #uan { left:10%; transform:translateY(-50%); }
+        header {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
 
-    /* Bandera (fondo) - entra desde la derecha */
-    #mexico {
-      position:absolute;
-      top:0; right:-120%;
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      z-index:2;
-      filter:brightness(0.55);
-      transition: right 1s cubic-bezier(.22,.9,.32,1) 0.6s;
-    }
-    header.loaded #mexico { right:0; }
+        header h1, header h2 {
+            color: white; /* ← CORREGIDO: Letras claras */
+        }
 
-    main { padding:22px 18px 60px; max-width:1100px; margin:0 auto; }
+        .logo-container {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+        }
 
-    /* BOTON LEGENDARIO: aquí van los colores y animación (no el logo) */
-    .legendario-container{
-      margin:26px auto;
-      position:relative;
-      text-align:center;
-      width:100%;
-      max-width:920px;
-    }
-    .btn-legendario{
-      display:inline-block;
-      padding:18px 34px;
-      border-radius:14px;
-      background: linear-gradient(90deg,var(--accent2), #9b5cff);
-      color:white;
-      font-weight:700;
-      font-size:1.12rem;
-      letter-spacing:1px;
-      border: 2px solid rgba(255,255,255,0.08);
-      box-shadow: 0 8px 30px rgba(102,16,242,0.22);
-      cursor:pointer;
-      transition: transform .28s ease, box-shadow .28s ease;
-    }
-    .btn-legendario:hover{ transform:translateY(-6px); box-shadow:0 18px 60px rgba(102,16,242,0.2) }
+        .uan-logo {
+            position: absolute;
+            left: -300px;
+            top: 10px;
+            width: 160px;
+            animation: slide 2s forwards;
+        }
 
-    .legendario-container::before{
-      content:"";
-      position:absolute;
-      inset:-40% -10%;
-      background: conic-gradient(from 90deg, rgba(255,140,0,0.12), rgba(102,16,242,0.12), rgba(255,140,0,0.12));
-      filter: blur(40px);
-      animation: slowSpin 10s linear infinite;
-      z-index:1;
-      pointer-events:none;
-    }
-    @keyframes slowSpin{ from{transform:rotate(0)} to{transform:rotate(360deg)} }
+        @keyframes slide {
+            to { left: 20px; }
+        }
 
-    /* VENTANA ÍNDICE */
-    .indice-ventana{
-      margin:18px auto 6px;
-      max-width:920px;
-      background:var(--card);
-      border-radius:12px;
-      padding:12px;
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .indice-header{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-    }
-    .indice-titulo{ font-weight:700; font-size:1.05rem; color:var(--muted) }
-    .indice-grid{
-      margin-top:12px;
-      display:grid;
-      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-      gap:10px;
-      max-height:420px;
-      overflow:auto;
-      padding-right:6px;
-    }
-    .bloque {
-      background: linear-gradient(180deg,#ffffff,#fbfbfd);
-      border-radius:8px;
-      padding:10px 12px;
-      border:1px solid rgba(16,24,40,0.04);
-      box-shadow: 0 6px 18px rgba(13,20,30,0.04);
-      transition: transform .16s ease, box-shadow .16s ease;
-    }
-    .bloque a{
-      color:var(--text);
-      font-weight:600;
-      text-decoration:none;
-      display:block;
-      font-size:0.96rem;
-    }
-    .bloque:hover{ transform:translateY(-6px); box-shadow:0 20px 40px rgba(16,24,40,0.06) }
+        .bandera {
+            position: absolute;
+            right: -300px;
+            top: 10px;
+            width: 200px;
+            animation: slideFlag 2s forwards;
+            animation-delay: 1s;
+        }
 
-    /* SECCIONES */
-    .seccion{
-      background:var(--card);
-      border-radius:12px;
-      padding:22px;
-      margin:18px 0;
-      box-shadow: var(--shadow);
-    }
-    h2{ margin-top:0; color:#003366 }
-    p{ color:#213; line-height:1.6 }
+        @keyframes slideFlag {
+            to { right: 20px; }
+        }
 
-    .videos a{ display:block; margin:10px 0; color:#0056b3; text-decoration:underline; font-weight:600 }
+        /* BOTÓN DEL ÍNDICE */
+        .dropdown-btn {
+            background: linear-gradient(90deg, #ff0000, #ffffff, #00a800);
+            color: black; /* ← TEXTO VISIBLE */
+            padding: 12px;
+            width: 90%;
+            font-size: 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            margin: 20px auto;
+            display: block;
+            font-weight: bold;
+        }
 
-    /* FOOTER */
-    footer{
-      margin-top:36px;
-      background:#0b1220;
-      color:#fff;
-      padding:22px 18px;
-      text-align:center;
-      border-top:6px solid rgba(255,140,0,0.08);
-    }
-    footer .redes a{
-      display:inline-block;
-      margin:6px 12px;
-      color:#cfe8ff;
-      text-decoration:none;
-      font-weight:600;
-    }
+        .dropdown-content {
+            display: none;
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            margin: 0 auto;
+        }
 
-    @media (max-width:720px){
-      header{ height:200px }
-      #uan{ width:120px }
-      .btn-legendario{ width:100%; padding:14px 18px }
-      .indice-grid{ grid-template-columns: repeat(1,1fr) }
-    }
-  </style>
+        .dropdown-content a {
+            display: block;
+            padding: 8px;
+            text-decoration: none;
+            color: white;
+            border-bottom: 1px solid #555;
+        }
+
+        .dropdown-content a:hover {
+            background: #444;
+        }
+
+        section {
+            padding: 20px;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        footer {
+            background: #111;
+            color: white; /* ← CORREGIDO: texto claro */
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+
+        .social {
+            margin-top: 15px;
+        }
+
+        .social a {
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 6px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .facebook1 {
+            background: #1877f2; /* azul */
+        }
+
+        .facebook2 {
+            background: #555; /* gris */
+        }
+    </style>
+
+    <script>
+        function toggleDropdown() {
+            let content = document.getElementById("bloques");
+            content.style.display = content.style.display === "block" ? "none" : "block";
+        }
+    </script>
+
 </head>
 <body>
-  <!-- HEADER: logo UAN (uan.png) y bandera Mexico (mexico.png) -->
-  <header id="mainHeader">
-    <img id="mexico" src="mexico.png" alt="Bandera de México" aria-hidden="true">
-    <img id="uan" src="uan.png" alt="Logo UAN">
-    <div class="cabecera-texto" aria-hidden="true">
-      <h1>Proyecto PLC – ICC 2025</h1>
-      <p>Autores: Carlos Adonaí Talamantes González / Miguel Muro Rodríguez — Ingeniería en Computación | Universidad Autónoma de Nayarit</p>
+    <header>
+        <div class="logo-container">
+            <img src="uan.png" class="uan-logo" alt="uan-logo">
+            <img src="mexico.png" class="bandera" alt="bandera">
+        </div>
+        <h1>Proyecto de PLC - 38 Bloques Especiales</h1>
+        <h2>Profesor: Ingeniero Ignacio Chávez Arcega | Materia: PLC</h2>
+    </header>
+
+    <!-- BOTÓN QUE DESPLIEGA EL ÍNDICE -->
+    <button class="dropdown-btn" onclick="toggleDropdown()">
+        Proyecto 38 Bloques – Ver Índice Completo
+    </button>
+
+    <div id="bloques" class="dropdown-content">
+        <!-- LISTA COMPLETA DE BLOQUES -->
+        <a href="bloque1.html">Bloque 1 - Retardo a la conexión</a>
+        <a href="bloque2.html">Bloque 2 - Retardo a la desconexión</a>
+        <a href="bloque3.html">Bloque 3 - Pulso a la conexión</a>
+        <a href="bloque4.html">Bloque 4 - Pulso a la desconexión</a>
+        <a href="bloque5.html">Bloque 5 - Contacto de flanco positivo</a>
+        <a href="bloque6.html">Bloque 6 - Contacto de flanco negativo</a>
+        <a href="bloque7.html">Bloque 7 - Temporizador cíclico</a>
+        <a href="bloque8.html">Bloque 8 - Retención de encendido</a>
+        <a href="bloque9.html">Bloque 9 - Reset con pulso</a>
+        <a href="bloque10.html">Bloque 10 - Biestable RS</a>
+        <a href="bloque11.html">Bloque 11 - Biestable SR</a>
+        <a href="bloque12.html">Bloque 12 - Comparador igual</a>
+        <a href="bloque13.html">Bloque 13 - Comparador mayor</a>
+        <a href="bloque14.html">Bloque 14 - Comparador menor</a>
+        <a href="bloque15.html">Bloque 15 - Contador ascendente</a>
+        <a href="bloque16.html">Bloque 16 - Contador descendente</a>
+        <a href="bloque17.html">Bloque 17 - Contador reversible</a>
+        <a href="bloque18.html">Bloque 18 - Conversión analógica</a>
+        <a href="bloque19.html">Bloque 19 - Límite analógico</a>
+        <a href="bloque20.html">Bloque 20 - Escalado analógico</a>
+        <a href="bloque21.html">Bloque 21 - Reloj semanal</a>
+        <a href="bloque22.html">Bloque 22 - Reloj astronómico</a>
+        <a href="bloque23.html">Bloque 23 - Multiplexor</a>
+        <a href="bloque24.html">Bloque 24 - Demultiplexor</a>
+        <a href="bloque25.html">Bloque 25 - Convertidor binario</a>
+        <a href="bloque26.html">Bloque 26 - Sumador</a>
+        <a href="bloque27.html">Bloque 27 - Restador</a>
+        <a href="bloque28.html">Bloque 28 - Multiplicador</a>
+        <a href="bloque29.html">Bloque 29 - Divisor</a>
+        <a href="bloque30.html">Bloque 30 - Comparador digital</a>
+        <a href="bloque31.html">Bloque 31 - Desplazador</a>
+        <a href="bloque32.html">Bloque 32 - Selector</a>
+        <a href="bloque33.html">Bloque 33 - Limpiador</a>
+        <a href="bloque34.html">Bloque 34 - Registro</a>
+        <a href="bloque35.html">Bloque 35 - Intermitencia</a>
+        <a href="bloque36.html">Bloque 36 - Bloque analógico PID</a>
+        <a href="bloque37.html">Bloque 37 - Control de alarmas</a>
+        <a href="bloque38.html">Bloque 38 - Gestión completa del sistema</a>
     </div>
-  </header>
 
-  <main>
-    <div class="legendario-container" role="region" aria-label="Proyecto 38 Bloques">
-      <button id="toggleBtn" class="btn-legendario" aria-expanded="false" aria-controls="indiceVentana">
-        PROYECTO 38 BLOQUES
-      </button>
-    </div>
+    <section>
+        <h2>Introducción</h2>
+        <p>Este proyecto tiene como objetivo documentar y explicar el uso de los 38 bloques especiales del PLC LOGO! de Siemens…</p>
 
-    <div id="indiceVentana" class="indice-ventana" style="display:none" role="region" aria-label="Índice de bloques">
-      <div class="indice-header">
-        <div class="indice-titulo">Índice de Bloques Especiales (1–38)</div>
-        <div style="color:var(--muted); font-size:0.95rem">Selecciona un bloque para ver su página</div>
-      </div>
+        <h2>Objetivo</h2>
+        <p>El propósito es brindar material educativo completo y claro…</p>
 
-      <div id="indiceGrid" class="indice-grid" aria-live="polite">
-        <!-- Bloques generados por JS -->
-      </div>
-    </div>
-
-    <!-- Contenido informativo (tu texto integrado) -->
-    <section class="seccion">
-      <h2>Introducción</h2>
-      <p>Un PLC (Controlador Lógico Programable) es un dispositivo electrónico diseñado para automatizar procesos industriales mediante la supervisión de señales de entrada y el control de salidas. LOGO!Soft Comfort, desarrollado por Siemens, es una herramienta de programación que permite simular, crear y verificar proyectos de control de manera visual e intuitiva. En esta página se explican conceptos técnicos y fundamentos esenciales para comprender el funcionamiento, cableado y seguridad de los sistemas PLC.</p>
+        <h2>Videos Educativos</h2>
+        <p><a href="https://youtu.be/N_podFpNZjc" target="_blank">Video 1 – Introducción PLC LOGO!</a></p>
+        <p><a href="https://youtu.be/ZmA8sGtiIV0" target="_blank">Video 2 – Programación básica</a></p>
     </section>
 
-    <section class="seccion">
-      <h2>Objetivo del proyecto</h2>
-      <p>El propósito de este proyecto es brindar una guía didáctica y accesible sobre el uso del software LOGO!Soft Comfort y el funcionamiento de los bloques especiales del PLC Siemens LOGO!, promoviendo el aprendizaje práctico de los estudiantes de Ingeniería y Automatización.</p>
-    </section>
+    <footer>
+        <p>Creado por Carlos Adonai Talamantes González y Miguel Muro Rodríguez | Año 2025</p>
+        <p>Profesor: Ingeniero Ignacio Chávez Arcega | Materia: PLC</p>
 
-    <section class="seccion">
-      <h2>Remanencia</h2>
-      <p>La <strong>remanencia</strong> es la capacidad del PLC para conservar ciertos valores o estados en memoria aun después de un corte de energía. Gracias a esta característica, el controlador puede continuar su operación con las mismas condiciones previas al restablecerse la alimentación eléctrica.</p>
-
-      <h2>Protección activa</h2>
-      <p>La <strong>protección activa</strong> incluye dispositivos y medidas de seguridad como fusibles, disyuntores y relés térmicos para cortar energía ante fallas y proteger tanto al equipo como al operario.</p>
-
-      <h2>Cómo se conecta un PLC</h2>
-      <p>El cableado se realiza conectando entradas (I) a sensores/pulsadores y salidas (Q) a actuadores, además de una fuente de alimentación adecuada. Siempre seguir el diagrama del fabricante.</p>
-
-      <h2>Protocolos básicos de seguridad</h2>
-      <p>Desenergizar antes de intervenir, uso de protecciones, cableado ordenado y simulaciones previas son prácticas esenciales para seguridad.</p>
-
-      <h2>Significado de siglas y lógica</h2>
-      <p>P = polo/fase, N = neutro, A = corriente alterna; NA = normalmente abierto, NC = normalmente cerrado. I = entradas, Q = salidas. Valores lógicos: 1 = activo, 0 = inactivo.</p>
-
-      <h2>Relés térmicos (OL)</h2>
-      <p>Relés térmicos protegen motores ante sobrecarga interrumpiendo el circuito cuando la corriente excede el valor nominal.</p>
-    </section>
-
-    <section class="seccion videos">
-      <h2>Videos Educativos</h2>
-      <a href="https://youtu.be/N_podFpNZjc" target="_blank" rel="noopener">Video 1: Explicación del Proyecto</a>
-      <a href="https://youtu.be/ZmA8sGtiIV0" target="_blank" rel="noopener">Video 2: Uso de botones (Código)</a>
-      <a href="https://youtu.be/WVVi1O6-OlI" target="_blank" rel="noopener">Video 3: Material adicional</a>
-    </section>
-
-  </main>
-
-  <footer>
-    <div style="max-width:1100px;margin:0 auto;">
-      <p>© 2025 | Proyecto PLC - ICC 2025 | Carlos Adonaí Talamantes González &amp; Miguel Muro Rodríguez</p>
-      <div class="redes">
-        <a href="https://www.facebook.com/share/14NZuwbbVwg/" target="_blank" rel="noopener">Facebook de Carlos</a>
-        <a href="https://www.facebook.com/share/1EZ4xDHeC3/" target="_blank" rel="noopener">Facebook de Miguel</a>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    // animación header: al cargar se aplica la clase 'loaded' para deslizar logo y mostrar bandera.
-    window.addEventListener('load', () => {
-      document.getElementById('mainHeader').classList.add('loaded');
-    });
-
-    // Nombres EXACTOS de los 38 bloques — formato para mostrar en el índice:
-    const nombres = [
-      "Retardo a la conexión",
-      "Retardo a la desconexión",
-      "Retardo conexión/desconexión",
-      "Retardo con memoria",
-      "Relé de barrido",
-      "Relé por flancos",
-      "Reloj simétrico",
-      "Generador de impulsos asíncrono",
-      "Generador aleatorio",
-      "Interruptor de alumbrado",
-      "Interruptor bifuncional",
-      "Temporizador semanal",
-      "Temporizador anual",
-      "Cronómetro / Reloj astronómico",
-      "Contador ascendente",
-      "Contador descendente",
-      "Contador adelante/atrás",
-      "Contador de horas",
-      "Selector de umbral",
-      "Instrucción aritmética",
-      "Comparador analógico",
-      "Conmutador analógico",
-      "Amplificador analógico",
-      "Vigilancia de valor analógico",
-      "Conmutador diferencial",
-      "MUX analógico",
-      "Rampa analógica",
-      "Regulador PI",
-      "PWM",
-      "Filtro analógico",
-      "Máx/Mín",
-      "Valor medio",
-      "Relé autoenclavador",
-      "Relé de impulsos",
-      "Texto de aviso",
-      "Interruptor de software",
-      "Registro de desplazamiento",
-      "Detección de error"
-    ];
-
-    // Genera la cuadrícula EXACTA con el formato: "Bloque N - Nombre"
-    const grid = document.getElementById('indiceGrid');
-    function generarGrid(){
-      grid.innerHTML = "";
-      for(let i=0;i<nombres.length;i++){
-        const num = i+1;
-        const div = document.createElement('div');
-        div.className = 'bloque';
-        const a = document.createElement('a');
-        a.href = `bloque${num}.html`;
-        // Texto EXACTO pedido:
-        a.textContent = `Bloque ${num} - ${nombres[i]}`;
-        a.setAttribute('title', `Abrir Bloque ${num} - ${nombres[i]}`);
-        div.appendChild(a);
-        grid.appendChild(div);
-      }
-    }
-    generarGrid();
-
-    // Toggle mostrar/ocultar índice con animación sencilla
-    const btn = document.getElementById('toggleBtn');
-    const ventana = document.getElementById('indiceVentana');
-    btn.addEventListener('click', () => {
-      const isVisible = ventana.style.display === 'block';
-      if(isVisible){
-        ventana.style.animation = 'fadeOut .28s ease forwards';
-        setTimeout(()=> ventana.style.display = 'none', 260);
-        btn.setAttribute('aria-expanded','false');
-      } else {
-        ventana.style.display = 'block';
-        ventana.style.animation = 'fadeInSlide .36s cubic-bezier(.2,.9,.2,1) forwards';
-        btn.setAttribute('aria-expanded','true');
-      }
-    });
-
-    // Añadimos reglas animadas por JS
-    (function(){
-      const s = document.createElement('style'); document.head.appendChild(s);
-      s.sheet.insertRule('@keyframes fadeInSlide { from { opacity:0; transform: translateY(-8px) scale(.995) } to { opacity:1; transform: translateY(0) scale(1) } }',0);
-      s.sheet.insertRule('@keyframes fadeOut { from { opacity:1; transform: translateY(0) } to { opacity:0; transform: translateY(-6px) } }',1);
-    })();
-  </script>
+        <div class="social">
+            <a class="facebook1" href="https://www.facebook.com/share/14NZuwbbVwg/" target="_blank">Facebook Azul</a>
+            <a class="facebook2" href="https://www.facebook.com/share/1EZ4xDHeC3/" target="_blank">Facebook Gris</a>
+        </div>
+    </footer>
 </body>
 </html>
