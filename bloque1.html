@@ -143,9 +143,14 @@
     .content-block h3{ margin:0 0 10px 0; font-size:1.05rem }
     .content-block p{ margin:0 0 12px 0; color:var(--text) }
 
-    /* Visuales */
-    .visuals { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-top:10px; }
-    .visuals img{ width:100%; border-radius:8px; box-shadow: 0 8px 20px rgba(16,24,40,0.05); border:1px solid rgba(16,24,40,0.03) }
+    /* Visuales: aumentar espacio entre imágenes */
+    .visuals { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-top:16px; }
+    .visuals img{ width:100%; border-radius:8px; box-shadow: 0 8px 20px rgba(16,24,40,0.05); border:1px solid rgba(16,24,40,0.03); display:block }
+
+    /* Pinout list styling */
+    .pinout { margin:8px 0 0 0; padding-left:18px; color:var(--text); }
+    .pinout dt { font-weight:800; margin-top:8px; }
+    .pinout dd { margin:4px 0 8px 0; color:var(--muted); }
 
     /* Sidebar */
     aside.card-side{
@@ -245,19 +250,39 @@
               <span class="kpi">Salida: Q1</span>
             </div>
 
-            <!-- CONTENIDO QUE EL USUARIO PUEDE EDITAR DIRECTAMENTE EN EL CÓDIGO -->
+            <!-- CONTENIDO QUE DEBES EDITAR DIRECTAMENTE EN EL HTML -->
             <div class="content-block" id="descripcion-bloque">
               <h3>Descripción</h3>
-              <!-- EDITAR: coloca aquí la descripción del bloque directamente en el HTML -->
+
               <p id="descripcion">
-                <!-- EDITAR: Reemplaza este párrafo por tu descripción. Ejemplo: "El bloque retardo a la conexión permite..." -->
+                Bloque temporizador que retrasa la activación de una salida durante un tiempo determinado después de recibir una señal de entrada. Si la entrada se desactiva antes de finalizar el tiempo programado, el conteo se reinicia. Este bloque se utiliza para evitar activaciones inmediatas y para secuenciar operaciones donde se requiere un retraso entre eventos.
               </p>
 
-              <h3>Notas de uso y parámetros</h3>
-              <!-- EDITAR: añade más párrafos o listas según necesites -->
-              <p id="notas">
-                <!-- EDITAR: Añade aquí notas sobre parámetros, ejemplos de configuración o comportamiento. -->
-              </p>
+              <h3>Pinout y descripción de conexiones</h3>
+
+              <dl class="pinout" aria-labelledby="pinout-title">
+                <dt>Entrada (Trg)</dt>
+                <dd>
+                  Cuando este pin pasa de 0 a 1 (nivel bajo a alto), comienza a contar el tiempo de retardo programado. Si el pin Trg vuelve a 0 antes de que termine el tiempo, el conteo se reinicia y la salida no se activa.
+                </dd>
+
+                <dt>Time (T)</dt>
+                <dd>
+                  Valor de tiempo programable que determina cuánto debe esperar el bloque antes de activar su salida tras recibir la señal de disparo (Trg). Ajustar este parámetro según la temporización requerida (ej. 0.5 s – 9999 s).
+                </dd>
+
+                <dt>Salida (Q)</dt>
+                <dd>
+                  Salida que se activa una vez transcurrido el tiempo de retardo programado después de que la entrada Trg permanece en nivel alto. Si la entrada se desactiva antes de completar el tiempo, la salida no se activa.
+                </dd>
+              </dl>
+
+              <h3 style="margin-top:8px">Notas de uso</h3>
+              <ul style="color:var(--muted); margin-top:6px">
+                <li>Si la señal de disparo (Trg) es pulsante y se requiere un pulso de salida estable, aumentar el parámetro Time según sea necesario.</li>
+                <li>Este bloque es útil para evitar rebotes o activaciones involuntarias en sistemas de control secuencial.</li>
+                <li>En aplicaciones donde la precisión es crítica, medir el tiempo real en el sistema final y ajustar el parámetro Time en consecuencia.</li>
+              </ul>
 
               <div class="visuals" aria-label="Visuales">
                 <!-- Imagen corta: visual1s -->
@@ -276,7 +301,7 @@
 
             <!-- Espacio informativo para quien edite desde código -->
             <div style="margin-top:12px">
-              <span class="hint">Para modificar textos, abre este archivo (bloque1.html) y edita el contenido de los elementos con id="descripcion" y id="notas".</span>
+              <span class="hint">IMPORTANTE: Para cambiar la "Descripción" o las "Notas" edita este archivo (bloque1.html) y modifica el contenido entre los elementos con id="descripcion" y id="notas".</span>
             </div>
           </div>
         </div>
